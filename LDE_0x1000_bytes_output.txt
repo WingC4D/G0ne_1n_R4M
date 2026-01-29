@@ -1,0 +1,2728 @@
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0000
+[i] Found Opcode Bytes: 0X40 0X53
+
+[i] Current Instruction Length:      0X01
+[i] Accumulated Instructions Length: 0X0002
+[i] Found Opcode Bytes: 0X56
+
+[i] Current Instruction Length:      0X01
+[i] Accumulated Instructions Length: 0X0003
+[i] Found Opcode Bytes: 0X57
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0004
+[i] Found Opcode Bytes: 0X41 0X54
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0006
+[i] Found Opcode Bytes: 0X41 0X55
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0008
+[i] Found Opcode Bytes: 0X41 0X56
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X000A
+[i] Found Opcode Bytes: 0X41 0X57
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X000C
+[i] Found Opcode Bytes: 0XB8   |  Found Operands Bytes: 0XA0 0X20 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0011
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X4D 0X2B 0X0E 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0016
+[i] Found Opcode Bytes: 0X48 0X2B 0XE0
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0019
+[i] Found Opcode Bytes: 0X48 0X8B 0X5   |  Found Operands Bytes: 0X10 0X76 0X2E 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0020
+[i] Found Opcode Bytes: 0X48 0X33 0XC4
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0023
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X90 0X20 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X002B
+[i] Found Opcode Bytes: 0X48 0X89 0XA4 0X24   |  Found Operands Bytes: 0X70 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0033
+[i] Found Opcode Bytes: 0X49 0X8B 0XC1
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0036
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X40 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X003E
+[i] Found Opcode Bytes: 0X49 0X8B 0XF0
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0041
+[i] Found Opcode Bytes: 0X48 0X8B 0XDA
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0044
+[i] Found Opcode Bytes: 0X4C 0X8B 0XF9
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0047
+[i] Found Opcode Bytes: 0X44 0X8B 0XB4 0X24   |  Found Operands Bytes: 0X10 0X21 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X004F
+[i] Found Opcode Bytes: 0X48 0X89 0X8C 0X24   |  Found Operands Bytes: 0X98 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0057
+[i] Found Opcode Bytes: 0X48 0X89 0X94 0X24   |  Found Operands Bytes: 0X18 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X005F
+[i] Found Opcode Bytes: 0X4C 0X89 0X84 0X24   |  Found Operands Bytes: 0X08 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0067
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X28 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X006F
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XE8 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0077
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X18 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X007F
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X08 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0087
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XF8 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X008F
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X00 0X21 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0097
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X58 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X009F
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X30 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00A7
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XF0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00AF
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X20 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00B7
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X10 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00BF
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X00 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00C7
+[i] Found Opcode Bytes: 0X44 0X89 0XB4 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00CF
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X18 0X21 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00D7
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X70 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00DF
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X20 0X21 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00E7
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XE0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00EF
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X28 0X21 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00F7
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XA0 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X00FF
+[i] Found Opcode Bytes: 0X4C 0X8B 0XA4 0X24   |  Found Operands Bytes: 0X30 0X21 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0107
+[i] Found Opcode Bytes: 0X4C 0X89 0XA4 0X24   |  Found Operands Bytes: 0XB0 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X010F
+[i] Found Opcode Bytes: 0X4C 0X89 0XA4 0X24   |  Found Operands Bytes: 0X90 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0117
+[i] Found Opcode Bytes: 0X33 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0119
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XB8 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0120
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0127
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X00 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X012F
+[i] Found Opcode Bytes: 0X66 0X89 0XBC 0X24   |  Found Operands Bytes: 0X6C 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0137
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD4 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X013E
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X54 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0145
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X58 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X014C
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X80 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0154
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X70 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X015C
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X38 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0164
+[i] Found Opcode Bytes: 0X33 0XC0
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0166
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0X94 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X016D
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X016F
+[i] Found Opcode Bytes: 0X44 0X8D 0X47   |  Found Operands Bytes: 0X64
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0173
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X90 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X017B
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X21 0XB4 0X07 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0180
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X68 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0188
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X50 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0190
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0192
+[i] Found Opcode Bytes: 0X41 0XB8   |  Found Operands Bytes: 0XB8 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0198
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X30 0X0E 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X01A0
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0XFC 0XB3 0X07 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X01A5
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XC8 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X01AC
+[i] Found Opcode Bytes: 0X33 0XC0
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X01AE
+[i] Found Opcode Bytes: 0XF 0X57 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01B1
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X78 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01B9
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X88 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01C1
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X98 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X01C9
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XA0 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01D0
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XA8 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01D8
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XB8 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01E0
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XC8 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X01E8
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XD0 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01EF
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XA0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01F7
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X98 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X01FF
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X20 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0207
+[i] Found Opcode Bytes: 0XF 0X57 0XC9
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X020A
+[i] Found Opcode Bytes: 0XF 0X11 0X8C 0X24   |  Found Operands Bytes: 0X80 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0212
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X50 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X021A
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X60 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0222
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X24   |  Found Operands Bytes: 0XD8 0X05 0X00 0X00 0X12 0X00 0X14 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X022E
+[i] Found Opcode Bytes: 0X48 0X8D 0X5   |  Found Operands Bytes: 0XEB 0X7F 0X1E 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0235
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XE0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X023D
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X023F
+[i] Found Opcode Bytes: 0X44 0X8D 0X47   |  Found Operands Bytes: 0X58
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0243
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X00 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X024B
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X51 0XB3 0X07 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0250
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XE4 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0257
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X84 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X025E
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XE0 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0265
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0267
+[i] Found Opcode Bytes: 0X44 0X8D 0X47   |  Found Operands Bytes: 0X40
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X026B
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X10 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0273
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X29 0XB3 0X07 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0278
+[i] Found Opcode Bytes: 0XF 0X57 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X027B
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X60 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0283
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X68 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X028B
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XC8 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0292
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X24 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0299
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XE8 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02A1
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X02A9
+[i] Found Opcode Bytes: 0X41 0XBD   |  Found Operands Bytes: 0X28 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X02AF
+[i] Found Opcode Bytes: 0X45 0X8B 0XC5
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X02B2
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02B4
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X00 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X02BC
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0XE0 0XB2 0X07 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X02C1
+[i] Found Opcode Bytes: 0X45 0X8B 0XC5
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X02C4
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02C6
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0XF0 0X11 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X02CE
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0XCE 0XB2 0X07 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02D3
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X08 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X02DB
+[i] Found Opcode Bytes: 0XF 0X57 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02DE
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XC0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02E6
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD8 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02EE
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X08 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02F6
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X7B 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X02FE
+[i] Found Opcode Bytes: 0X66 0X89 0XBC 0X24   |  Found Operands Bytes: 0X88 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0306
+[i] Found Opcode Bytes: 0X66 0X89 0XBC 0X24   |  Found Operands Bytes: 0XC0 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X030E
+[i] Found Opcode Bytes: 0X66 0X89 0XBC 0X24   |  Found Operands Bytes: 0XA0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0316
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD4 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X031D
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X80 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0325
+[i] Found Opcode Bytes: 0XF 0X57 0XC9
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0328
+[i] Found Opcode Bytes: 0XF 0X11 0X8C 0X24   |  Found Operands Bytes: 0X70 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0330
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XB8 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0338
+[i] Found Opcode Bytes: 0XF 0X11 0X8C 0X24   |  Found Operands Bytes: 0XA8 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0340
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X80 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0347
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XB0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X034F
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XB8 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0357
+[i] Found Opcode Bytes: 0X48 0X85 0XDB
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X035A
+[i] Found Opcode Bytes: 0X75   |  Found Operands Bytes: 0X0F
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X035C
+[i] Found Opcode Bytes: 0X48 0X85 0XF6
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X035F
+[i] Found Opcode Bytes: 0X75   |  Found Operands Bytes: 0X0A
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0361
+[i] Found Opcode Bytes: 0XB9   |  Found Operands Bytes: 0X30 0X00 0X00 0XC0
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0366
+[i] Found Opcode Bytes: 0XE9   |  Found Operands Bytes: 0X8D 0X5F 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X036B
+[i] Found Opcode Bytes: 0X4D 0X85 0XE4
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X036E
+[i] Found Opcode Bytes: 0XF 0X84   |  Found Operands Bytes: 0X7F 0X5F 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0374
+[i] Found Opcode Bytes: 0X48 0X8B 0X9C 0X24   |  Found Operands Bytes: 0XA0 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X037C
+[i] Found Opcode Bytes: 0X48 0X85 0XDB
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X037F
+[i] Found Opcode Bytes: 0XF 0X84   |  Found Operands Bytes: 0X6E 0X5F 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0385
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X60 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X038D
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XE8 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0395
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X60 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X039D
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XF8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03A5
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X90 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03AD
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X98 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03B5
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X78 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03BD
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XA8 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03C5
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X90 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X03CD
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XE0 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03D4
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X70 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03DC
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X30 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03E4
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XF0 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03EC
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X70 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03F4
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X41 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X03FC
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X44 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0404
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0XF4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X040C
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X40 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0414
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X48 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X041C
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XA0 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0424
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X68 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X042C
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XCC 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0433
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X18 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X043B
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X20 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0442
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X98 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X044A
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XF8 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0451
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0458
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XBC 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X045F
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X78 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0467
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XB0 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X046E
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X18 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0476
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD8 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X047D
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X48 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0484
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XF0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X048B
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X58 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0492
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XA8 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X049A
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XC0 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X04A1
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X88 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X04A9
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X78 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X04B1
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X00 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X04B9
+[i] Found Opcode Bytes: 0X33 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X04BB
+[i] Found Opcode Bytes: 0XF 0X11 0X8C 0X24   |  Found Operands Bytes: 0X90 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X04C3
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XA0 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X04CB
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XE0 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X04D3
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XF0 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X04DB
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X00 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X04E3
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X90 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X04EA
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD0 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X04F1
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X2C 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X04F8
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XF4 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X04FF
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XC8 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0506
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X30 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X050E
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XC8 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0516
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XD8 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X051E
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0520
+[i] Found Opcode Bytes: 0X44 0X8D 0X40   |  Found Operands Bytes: 0X58
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0524
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0XF0 0X08 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X052C
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X70 0XB0 0X07 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0531
+[i] Found Opcode Bytes: 0XF 0X57 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0534
+[i] Found Opcode Bytes: 0X33 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0536
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X40 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X053E
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X50 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0546
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X60 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X054E
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X30 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X09
+[i] Accumulated Instructions Length: 0X0556
+[i] Found Opcode Bytes: 0X65 0X48 0X8B 0X4   |  Found Operands Bytes: 0X25 0X60 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X055F
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X10 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0567
+[i] Found Opcode Bytes: 0X4C 0X8B 0X60   |  Found Operands Bytes: 0X30
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X056B
+[i] Found Opcode Bytes: 0X4C 0X89 0XA4 0X24   |  Found Operands Bytes: 0XD8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0573
+[i] Found Opcode Bytes: 0X4C 0X89 0XA4 0X24   |  Found Operands Bytes: 0XC0 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X057B
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X42 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0583
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X43 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X058B
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X68 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0593
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X10 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X059B
+[i] Found Opcode Bytes: 0X41 0XBD   |  Found Operands Bytes: 0X00 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X05A1
+[i] Found Opcode Bytes: 0X45 0X8B 0XC5
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X05A4
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05A6
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X70 0X1D 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X05AE
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0XEE 0XAF 0X07 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05B3
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X50 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05BB
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X38 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05C3
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X40 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05CB
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XB8 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05D3
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X80 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05DB
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0XF8 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05E3
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0X69 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X05EB
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XB0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05F2
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X00 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X05FA
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X60 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0602
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X28 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0609
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X08 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0611
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0XF6 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0619
+[i] Found Opcode Bytes: 0X40 0X88 0XBC 0X24   |  Found Operands Bytes: 0XF5 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0621
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X20 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0629
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X90 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0631
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XC4 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0638
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD4 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X063F
+[i] Found Opcode Bytes: 0XF 0X57 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0642
+[i] Found Opcode Bytes: 0X33 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0644
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XD8 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X064C
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XE8 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0654
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0XF8 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X065C
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X08 0X08 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0664
+[i] Found Opcode Bytes: 0XF 0X11 0X84 0X24   |  Found Operands Bytes: 0X50 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X066C
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X28 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0674
+[i] Found Opcode Bytes: 0X8D 0X70   |  Found Operands Bytes: 0X01
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0677
+[i] Found Opcode Bytes: 0X89 0XB4 0X24   |  Found Operands Bytes: 0XCC 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X067E
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XEC 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0685
+[i] Found Opcode Bytes: 0X66 0X89 0XBC 0X24   |  Found Operands Bytes: 0X70 0X1E 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X068D
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XAC 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0694
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X30 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X069C
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD8 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X06A3
+[i] Found Opcode Bytes: 0X41 0X8B 0XC6
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X06A6
+[i] Found Opcode Bytes: 0X83 0XE0   |  Found Operands Bytes: 0X18
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X06A9
+[i] Found Opcode Bytes: 0X3C 0X18
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X06AB
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X17
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X06AD
+[i] Found Opcode Bytes: 0XBA   |  Found Operands Bytes: 0X00 0X08 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X06B2
+[i] Found Opcode Bytes: 0X8B 0X8C 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X06B9
+[i] Found Opcode Bytes: 0X44 0X85 0XF2
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X06BC
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X1C
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X06BE
+[i] Found Opcode Bytes: 0XF 0XBA 0XE1   |  Found Operands Bytes: 0X0C
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X06C2
+[i] Found Opcode Bytes: 0X73   |  Found Operands Bytes: 0X35
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X06C4
+[i] Found Opcode Bytes: 0XB9   |  Found Operands Bytes: 0X57 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X06C9
+[i] Found Opcode Bytes: 0X48 0XFF 0X15   |  Found Operands Bytes: 0X50 0X00 0X1E 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X06D0
+[i] Found Opcode Bytes: 0XF 0X1F 0X44 0X0   |  Found Operands Bytes: 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X06D5
+[i] Found Opcode Bytes: 0XE9   |  Found Operands Bytes: 0X23 0X5C 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X06DA
+[i] Found Opcode Bytes: 0XF 0XBA 0XE1   |  Found Operands Bytes: 0X0C
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X06DE
+[i] Found Opcode Bytes: 0X72   |  Found Operands Bytes: 0X19
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X06E0
+[i] Found Opcode Bytes: 0X48 0X8B 0X5   |  Found Operands Bytes: 0XA9 0XC8 0X2E 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X06E7
+[i] Found Opcode Bytes: 0X40 0X38 0XB8   |  Found Operands Bytes: 0XF4 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X06EE
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X09
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X06F0
+[i] Found Opcode Bytes: 0XB 0XCA
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X06F2
+[i] Found Opcode Bytes: 0X89 0X8C 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X06F9
+[i] Found Opcode Bytes: 0XF6 0XC1   |  Found Operands Bytes: 0X40
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X06FC
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X06FE
+[i] Found Opcode Bytes: 0X40 0X8A 0XC6
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0701
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X55
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0703
+[i] Found Opcode Bytes: 0XF 0XBA 0XE1   |  Found Operands Bytes: 0X0E
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0707
+[i] Found Opcode Bytes: 0X73   |  Found Operands Bytes: 0X07
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0709
+[i] Found Opcode Bytes: 0XB8   |  Found Operands Bytes: 0X05 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X070E
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X48
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0710
+[i] Found Opcode Bytes: 0XF6 0XC1   |  Found Operands Bytes: 0X20
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0713
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X0B
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0715
+[i] Found Opcode Bytes: 0X41 0XBD   |  Found Operands Bytes: 0X02 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X071B
+[i] Found Opcode Bytes: 0X41 0X8A 0XC5
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X071E
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X3E
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0720
+[i] Found Opcode Bytes: 0XF 0XBA 0XE1   |  Found Operands Bytes: 0X0F
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0724
+[i] Found Opcode Bytes: 0X73   |  Found Operands Bytes: 0X04
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0726
+[i] Found Opcode Bytes: 0XB0   |  Found Operands Bytes: 0X06
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0728
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X2E
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X072A
+[i] Found Opcode Bytes: 0X84 0XC9
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X072C
+[i] Found Opcode Bytes: 0X79   |  Found Operands Bytes: 0X04
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X072E
+[i] Found Opcode Bytes: 0XB0   |  Found Operands Bytes: 0X03
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0730
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X26
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0732
+[i] Found Opcode Bytes: 0X41 0X85 0XCD
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0735
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X1E
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0737
+[i] Found Opcode Bytes: 0X4D 0X85 0XFF
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X073A
+[i] Found Opcode Bytes: 0XF 0X95 0XC2
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X073D
+[i] Found Opcode Bytes: 0X33 0XC9
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X073F
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X20 0XE4 0X08 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0744
+[i] Found Opcode Bytes: 0X48 0X85 0XC0
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0747
+[i] Found Opcode Bytes: 0XF 0X95 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X074A
+[i] Found Opcode Bytes: 0X4 0X3
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X074C
+[i] Found Opcode Bytes: 0X8B 0X8C 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0753
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X03
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0755
+[i] Found Opcode Bytes: 0X40 0X8A 0XC7
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0758
+[i] Found Opcode Bytes: 0X41 0XBD   |  Found Operands Bytes: 0X02 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X075E
+[i] Found Opcode Bytes: 0X88 0X84 0X24   |  Found Operands Bytes: 0X78 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0765
+[i] Found Opcode Bytes: 0X81 0XE1   |  Found Operands Bytes: 0X1F 0X3E 0XFF 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X076B
+[i] Found Opcode Bytes: 0X89 0X8C 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0772
+[i] Found Opcode Bytes: 0XF 0XBA 0XE1   |  Found Operands Bytes: 0X12
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0776
+[i] Found Opcode Bytes: 0X73   |  Found Operands Bytes: 0X08
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0778
+[i] Found Opcode Bytes: 0X83 0X8C 0X24   |  Found Operands Bytes: 0XF0 0X00 0X00 0X00 0X40
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0780
+[i] Found Opcode Bytes: 0XF 0XBA 0XE1   |  Found Operands Bytes: 0X18
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0784
+[i] Found Opcode Bytes: 0X73   |  Found Operands Bytes: 0X07
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0786
+[i] Found Opcode Bytes: 0X9 0XB4 0X24   |  Found Operands Bytes: 0XF0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X078D
+[i] Found Opcode Bytes: 0XF 0XBA 0XE1   |  Found Operands Bytes: 0X10
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0791
+[i] Found Opcode Bytes: 0X73   |  Found Operands Bytes: 0X09
+
+[i] Current Instruction Length:      0X09
+[i] Accumulated Instructions Length: 0X0793
+[i] Found Opcode Bytes: 0XF 0XBA 0XAC 0X24   |  Found Operands Bytes: 0XF0 0X00 0X00 0X00 0X08
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X079C
+[i] Found Opcode Bytes: 0XF6 0X84 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00 0X04
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X07A4
+[i] Found Opcode Bytes: 0X75   |  Found Operands Bytes: 0X09
+
+[i] Current Instruction Length:      0X09
+[i] Accumulated Instructions Length: 0X07A6
+[i] Found Opcode Bytes: 0XF 0XBA 0XAC 0X24   |  Found Operands Bytes: 0XF0 0X00 0X00 0X00 0X09
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X07AF
+[i] Found Opcode Bytes: 0XF6 0X84 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00 0X03
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X07B7
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X42
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X07B9
+[i] Found Opcode Bytes: 0X48 0XFF 0X15   |  Found Operands Bytes: 0XE0 0X0F 0X1E 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X07C0
+[i] Found Opcode Bytes: 0XF 0X1F 0X44 0X0   |  Found Operands Bytes: 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X07C5
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X07C7
+[i] Found Opcode Bytes: 0X79   |  Found Operands Bytes: 0X07
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X07C9
+[i] Found Opcode Bytes: 0X8B 0XC8
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X07CB
+[i] Found Opcode Bytes: 0XE9   |  Found Operands Bytes: 0X28 0X5B 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X07D0
+[i] Found Opcode Bytes: 0X48 0XFF 0X15   |  Found Operands Bytes: 0X59 0X12 0X1E 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X07D7
+[i] Found Opcode Bytes: 0XF 0X1F 0X44 0X0   |  Found Operands Bytes: 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X07DC
+[i] Found Opcode Bytes: 0X48 0X8B 0XC8
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X07DF
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X98 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X07E7
+[i] Found Opcode Bytes: 0X44 0X84 0XAC 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X07EF
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X12
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X07F1
+[i] Found Opcode Bytes: 0X44 0X9 0XAC 0X24   |  Found Operands Bytes: 0XF0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X07F9
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X08
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X07FB
+[i] Found Opcode Bytes: 0X48 0X8B 0X8C 0X24   |  Found Operands Bytes: 0X98 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0803
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X24   |  Found Operands Bytes: 0X08 0X0A 0X00 0X00 0X05 0X00 0X02 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X080F
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X20 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0817
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X24   |  Found Operands Bytes: 0X28 0X0A 0X00 0X00 0X03 0X00 0X01 0X00
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0823
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X24   |  Found Operands Bytes: 0X30 0X0A 0X00 0X00 0X10 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X082F
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X40 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0837
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XC0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X083F
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X38 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0847
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X24   |  Found Operands Bytes: 0X48 0X0A 0X00 0X00 0X06 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0853
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X24   |  Found Operands Bytes: 0X50 0X0A 0X00 0X00 0X40 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X085F
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X60 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0867
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X10 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X086F
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X58 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X0B
+[i] Accumulated Instructions Length: 0X0877
+[i] Found Opcode Bytes: 0XC7 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00 0X03 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0882
+[i] Found Opcode Bytes: 0XB8   |  Found Operands Bytes: 0X03 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0887
+[i] Found Opcode Bytes: 0X41 0XBF   |  Found Operands Bytes: 0X08 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X088D
+[i] Found Opcode Bytes: 0X48 0X85 0XC9
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0890
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X34
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0892
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X24   |  Found Operands Bytes: 0X68 0X0A 0X00 0X00 0X01 0X00 0X06 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X089E
+[i] Found Opcode Bytes: 0X4C 0X89 0XBC 0X24   |  Found Operands Bytes: 0X70 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X08A6
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X24   |  Found Operands Bytes: 0X80 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X08AE
+[i] Found Opcode Bytes: 0X48 0X89 0X8C 0X24   |  Found Operands Bytes: 0X78 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X0B
+[i] Accumulated Instructions Length: 0X08B6
+[i] Found Opcode Bytes: 0XC7 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00 0X04 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X08C1
+[i] Found Opcode Bytes: 0XB8   |  Found Operands Bytes: 0X04 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X08C6
+[i] Found Opcode Bytes: 0X40 0X38 0XBC 0X24   |  Found Operands Bytes: 0X78 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X08CE
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X61
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X08D0
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X08D4
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X4   |  Found Operands Bytes: 0X08 0X0A 0X00 0X00 0X08 0X00 0X02 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X08E0
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X08E7
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X08EB
+[i] Found Opcode Bytes: 0X48 0X89 0XB4 0X4   |  Found Operands Bytes: 0X10 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X08F3
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X08FA
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X08FE
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X4   |  Found Operands Bytes: 0X20 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0906
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X090D
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0911
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X78 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0919
+[i] Found Opcode Bytes: 0X48 0X89 0X8C 0X4   |  Found Operands Bytes: 0X18 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0921
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0928
+[i] Found Opcode Bytes: 0X3 0XC6
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X092A
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X0B
+[i] Accumulated Instructions Length: 0X0931
+[i] Found Opcode Bytes: 0XF7 0X84 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00 0X00 0X00 0X00 0X04
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X093C
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X6C
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X093E
+[i] Found Opcode Bytes: 0X89 0XB4 0X24   |  Found Operands Bytes: 0X84 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0945
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0949
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X4   |  Found Operands Bytes: 0X08 0X0A 0X00 0X00 0X09 0X00 0X02 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0955
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X095C
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X0960
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X4   |  Found Operands Bytes: 0X10 0X0A 0X00 0X00 0X04 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X096C
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0973
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0977
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X4   |  Found Operands Bytes: 0X20 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X097F
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0986
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X098A
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X84 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0992
+[i] Found Opcode Bytes: 0X48 0X89 0X8C 0X4   |  Found Operands Bytes: 0X18 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X099A
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X09A1
+[i] Found Opcode Bytes: 0X3 0XC6
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X09A3
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X09AA
+[i] Found Opcode Bytes: 0X41 0XBD   |  Found Operands Bytes: 0X00 0X00 0X40 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X09B0
+[i] Found Opcode Bytes: 0X44 0X85 0XAC 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X09B8
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X58
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X09BA
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X0C
+[i] Accumulated Instructions Length: 0X09BE
+[i] Found Opcode Bytes: 0X48 0XC7 0X84 0X4   |  Found Operands Bytes: 0X08 0X0A 0X00 0X00 0X12 0X00 0X02 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X09CA
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X09D1
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X09D5
+[i] Found Opcode Bytes: 0X4C 0X89 0XBC 0X4   |  Found Operands Bytes: 0X10 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X09DD
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X09E4
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X09E8
+[i] Found Opcode Bytes: 0X48 0X89 0XBC 0X4   |  Found Operands Bytes: 0X20 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X09F0
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X09F7
+[i] Found Opcode Bytes: 0X48 0XC1 0XE0   |  Found Operands Bytes: 0X05
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X09FB
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0XC8 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0A03
+[i] Found Opcode Bytes: 0X48 0X89 0X8C 0X4   |  Found Operands Bytes: 0X18 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0A0B
+[i] Found Opcode Bytes: 0X1 0XB4 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0A12
+[i] Found Opcode Bytes: 0XF 0X57 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0A15
+[i] Found Opcode Bytes: 0X33 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0A17
+[i] Found Opcode Bytes: 0X4C 0X8B 0XB4 0X24   |  Found Operands Bytes: 0XB0 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0A1F
+[i] Found Opcode Bytes: 0X41 0XF 0X11 0X6
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0A23
+[i] Found Opcode Bytes: 0X49 0X89 0X46   |  Found Operands Bytes: 0X10
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0A27
+[i] Found Opcode Bytes: 0X48 0X8B 0X8C 0X24   |  Found Operands Bytes: 0X70 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0A2F
+[i] Found Opcode Bytes: 0X48 0X85 0XC9
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0A32
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X63
+
+[i] Current Instruction Length:      0X0B
+[i] Accumulated Instructions Length: 0X0A34
+[i] Found Opcode Bytes: 0XF7 0X84 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00 0X00 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0A3F
+[i] Found Opcode Bytes: 0X75   |  Found Operands Bytes: 0X56
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0A41
+[i] Found Opcode Bytes: 0X44 0X8B 0XC6
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0A44
+[i] Found Opcode Bytes: 0X48 0X8D 0X94 0X24   |  Found Operands Bytes: 0X38 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0A4C
+[i] Found Opcode Bytes: 0X48 0XFF 0X15   |  Found Operands Bytes: 0XE5 0X0F 0X1E 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0A53
+[i] Found Opcode Bytes: 0XF 0X1F 0X44 0X0   |  Found Operands Bytes: 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0A58
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XE0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0A5F
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0A61
+[i] Found Opcode Bytes: 0X79   |  Found Operands Bytes: 0X1B
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0A63
+[i] Found Opcode Bytes: 0X8B 0XC8
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0A65
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X06 0X27 0XF9 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0A6A
+[i] Found Opcode Bytes: 0X48 0X8D 0X15   |  Found Operands Bytes: 0X8C 0X58 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0A71
+[i] Found Opcode Bytes: 0X48 0X8B 0X8C 0X24   |  Found Operands Bytes: 0X70 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0A79
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0XF1 0X20 0X0E 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0A7E
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X38 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0A86
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X70 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X09
+[i] Accumulated Instructions Length: 0X0A8E
+[i] Found Opcode Bytes: 0XF 0XBA 0XAC 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00 0X0A
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0A97
+[i] Found Opcode Bytes: 0XF 0X10 0X13
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0A9A
+[i] Found Opcode Bytes: 0XF 0X29 0X94 0X24   |  Found Operands Bytes: 0X90 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0AA2
+[i] Found Opcode Bytes: 0XF 0X10 0X43   |  Found Operands Bytes: 0X10
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0AA6
+[i] Found Opcode Bytes: 0XF 0X29 0X84 0X24   |  Found Operands Bytes: 0XA0 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0AAE
+[i] Found Opcode Bytes: 0XF 0X10 0X4B   |  Found Operands Bytes: 0X20
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0AB2
+[i] Found Opcode Bytes: 0XF 0X29 0X8C 0X24   |  Found Operands Bytes: 0XB0 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0ABA
+[i] Found Opcode Bytes: 0XF 0X10 0X43   |  Found Operands Bytes: 0X30
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0ABE
+[i] Found Opcode Bytes: 0XF 0X29 0X84 0X24   |  Found Operands Bytes: 0XC0 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0AC6
+[i] Found Opcode Bytes: 0XF 0X10 0X4B   |  Found Operands Bytes: 0X40
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0ACA
+[i] Found Opcode Bytes: 0XF 0X29 0X8C 0X24   |  Found Operands Bytes: 0XD0 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0AD2
+[i] Found Opcode Bytes: 0XF 0X10 0X43   |  Found Operands Bytes: 0X50
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0AD6
+[i] Found Opcode Bytes: 0XF 0X29 0X84 0X24   |  Found Operands Bytes: 0XE0 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0ADE
+[i] Found Opcode Bytes: 0XF2 0XF 0X10 0X4B   |  Found Operands Bytes: 0X60
+
+[i] Current Instruction Length:      0X09
+[i] Accumulated Instructions Length: 0X0AE3
+[i] Found Opcode Bytes: 0XF2 0XF 0X11 0X8C   |  Found Operands Bytes: 0X24 0XF0 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0AEC
+[i] Found Opcode Bytes: 0X41 0XBE   |  Found Operands Bytes: 0X00 0X00 0X08 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0AF2
+[i] Found Opcode Bytes: 0X44 0X85 0XB4 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0AFA
+[i] Found Opcode Bytes: 0XF 0X84   |  Found Operands Bytes: 0X31 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0B00
+[i] Found Opcode Bytes: 0X66 0XF 0X7E 0XD0
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0B04
+[i] Found Opcode Bytes: 0X83 0XF8   |  Found Operands Bytes: 0X70
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0B07
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X16
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0B09
+[i] Found Opcode Bytes: 0XB9   |  Found Operands Bytes: 0X0D 0X00 0X00 0XC0
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0B0E
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X5D 0X26 0XF9 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0B13
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0XD0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0B1A
+[i] Found Opcode Bytes: 0XE9   |  Found Operands Bytes: 0X7B 0X47 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0B1F
+[i] Found Opcode Bytes: 0X48 0X8B 0X4B   |  Found Operands Bytes: 0X68
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B23
+[i] Found Opcode Bytes: 0X48 0X89 0X8C 0X24   |  Found Operands Bytes: 0XD8 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0B2B
+[i] Found Opcode Bytes: 0X48 0X85 0XC9
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0B2E
+[i] Found Opcode Bytes: 0XF 0X84   |  Found Operands Bytes: 0XFD 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X0B
+[i] Accumulated Instructions Length: 0X0B34
+[i] Found Opcode Bytes: 0XC7 0X84 0X24   |  Found Operands Bytes: 0XC0 0X00 0X00 0X00 0X1C 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B3F
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B47
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XB8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B4F
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X00 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B57
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XB0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B5F
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XF0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B67
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XA8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B6F
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XC8 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B77
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XA0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B7F
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X28 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B87
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X98 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B8F
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X50 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B97
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X90 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0B9F
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XD8 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0BA7
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X88 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0BAF
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X80 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0BB7
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X80 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0BBF
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XC8 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0BC7
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X78
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0BCC
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X40 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0BD4
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X70
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0BD9
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X18 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0BE1
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X68
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0BE6
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X90 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0BEE
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X60
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0BF3
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XD0 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0BFB
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X58
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C00
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X00 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C08
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X50
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C0D
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XE0 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C15
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X48
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C1A
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X90 0X09 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C22
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X40
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C27
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X00 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C2F
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X38
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C34
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X48 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C3C
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X30
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C41
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X69 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C49
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X28
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C4E
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0XB8 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C56
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X20
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C5B
+[i] Found Opcode Bytes: 0X4C 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X10 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C63
+[i] Found Opcode Bytes: 0X4C 0X8D 0X84 0X24   |  Found Operands Bytes: 0X58 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0C6B
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C6D
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X6A 0X10 0X02 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0C72
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XE0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0C79
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0C7B
+[i] Found Opcode Bytes: 0X79   |  Found Operands Bytes: 0X07
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0C7D
+[i] Found Opcode Bytes: 0X8B 0XC8
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C7F
+[i] Found Opcode Bytes: 0XE9   |  Found Operands Bytes: 0X8A 0XFE 0XFF 0XFF
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C84
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X2B 0X54 0X0D 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0C89
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0C8B
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X3F
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0C8D
+[i] Found Opcode Bytes: 0X39 0XBC 0X24   |  Found Operands Bytes: 0X80 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0C94
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X36
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0C96
+[i] Found Opcode Bytes: 0X48 0X8B 0X8C 0X24   |  Found Operands Bytes: 0X10 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0C9E
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X2D 0X9E 0X0D 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0CA3
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0CA5
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X25
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0CA7
+[i] Found Opcode Bytes: 0X4C 0X8D 0X84 0X24   |  Found Operands Bytes: 0XB8 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0CAF
+[i] Found Opcode Bytes: 0X48 0X8D 0X94 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0CB7
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X00 0X0A 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0CBF
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0XB8 0X8F 0X0D 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0CC4
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XB0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0CCC
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD8 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0CD4
+[i] Found Opcode Bytes: 0X8B 0X8
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0CD6
+[i] Found Opcode Bytes: 0XF 0XBA 0XE1   |  Found Operands Bytes: 0X08
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0CDA
+[i] Found Opcode Bytes: 0X73   |  Found Operands Bytes: 0X16
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0CDC
+[i] Found Opcode Bytes: 0X40 0X88 0XB4 0X24   |  Found Operands Bytes: 0X42 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0CE4
+[i] Found Opcode Bytes: 0X48 0X39 0XBC 0X24   |  Found Operands Bytes: 0XB8 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0CEC
+[i] Found Opcode Bytes: 0XF 0X85   |  Found Operands Bytes: 0X17 0XFE 0XFF 0XFF
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0CF2
+[i] Found Opcode Bytes: 0X41 0X85 0XCE
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0CF5
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0X2C 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0CFC
+[i] Found Opcode Bytes: 0XF 0X45 0XC6
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0CFF
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0X2C 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0D06
+[i] Found Opcode Bytes: 0XF6 0X84 0X24   |  Found Operands Bytes: 0X58 0X02 0X00 0X00 0X04
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D0E
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X09
+
+[i] Current Instruction Length:      0X09
+[i] Accumulated Instructions Length: 0X0D10
+[i] Found Opcode Bytes: 0XF 0XBA 0XAC 0X24   |  Found Operands Bytes: 0XF0 0X00 0X00 0X00 0X0A
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0D19
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD8 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0D21
+[i] Found Opcode Bytes: 0XF7 0X0   |  Found Operands Bytes: 0X00 0X00 0X00 0X20
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D27
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X08
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0D29
+[i] Found Opcode Bytes: 0X44 0X9 0XAC 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0D31
+[i] Found Opcode Bytes: 0XBB   |  Found Operands Bytes: 0X00 0X08 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0D36
+[i] Found Opcode Bytes: 0X85 0X9C 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D3D
+[i] Found Opcode Bytes: 0X75   |  Found Operands Bytes: 0X45
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0D3F
+[i] Found Opcode Bytes: 0X48 0X83 0XC9   |  Found Operands Bytes: 0XFF
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0D43
+[i] Found Opcode Bytes: 0X48 0X39 0XBC 0X24   |  Found Operands Bytes: 0X48 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X09
+[i] Accumulated Instructions Length: 0X0D4B
+[i] Found Opcode Bytes: 0X48 0XF 0X45 0X8C   |  Found Operands Bytes: 0X24 0X48 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0D54
+[i] Found Opcode Bytes: 0X4C 0X8D 0X84 0X24   |  Found Operands Bytes: 0XE4 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D5C
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0D5E
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0XFD 0X91 0X03 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D63
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D65
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X1D
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0D67
+[i] Found Opcode Bytes: 0X39 0XBC 0X24   |  Found Operands Bytes: 0XE4 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D6E
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X14
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0D70
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0D77
+[i] Found Opcode Bytes: 0XF 0XBA 0XF0   |  Found Operands Bytes: 0X0C
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D7B
+[i] Found Opcode Bytes: 0XB 0XC3
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0D7D
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XE8 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0D84
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XCC 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0D8B
+[i] Found Opcode Bytes: 0XF 0XBA 0XE0   |  Found Operands Bytes: 0X08
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D8F
+[i] Found Opcode Bytes: 0X73   |  Found Operands Bytes: 0X12
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0D91
+[i] Found Opcode Bytes: 0XA9   |  Found Operands Bytes: 0X00 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0D96
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X0B
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0D98
+[i] Found Opcode Bytes: 0XF 0XBA 0XF0   |  Found Operands Bytes: 0X08
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0D9C
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XCC 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0DA3
+[i] Found Opcode Bytes: 0X48 0X39 0XBC 0X24   |  Found Operands Bytes: 0XE0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0DAB
+[i] Found Opcode Bytes: 0XF 0X84   |  Found Operands Bytes: 0XB5 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0DB1
+[i] Found Opcode Bytes: 0X41 0XBE   |  Found Operands Bytes: 0X06 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0DB7
+[i] Found Opcode Bytes: 0X45 0X8B 0XC6
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0DBA
+[i] Found Opcode Bytes: 0X33 0XD2
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0DBC
+[i] Found Opcode Bytes: 0X49 0X8B 0XCC
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0DBF
+[i] Found Opcode Bytes: 0X48 0XFF 0X15   |  Found Operands Bytes: 0X5A 0X0E 0X1E 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0DC6
+[i] Found Opcode Bytes: 0XF 0X1F 0X44 0X0   |  Found Operands Bytes: 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0DCB
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X70 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0DD3
+[i] Found Opcode Bytes: 0X48 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0DD6
+[i] Found Opcode Bytes: 0X75   |  Found Operands Bytes: 0X0A
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0DD8
+[i] Found Opcode Bytes: 0XB9   |  Found Operands Bytes: 0X17 0X00 0X00 0XC0
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0DDD
+[i] Found Opcode Bytes: 0XE9   |  Found Operands Bytes: 0X2C 0XFD 0XFF 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0DE2
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X10 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0DE9
+[i] Found Opcode Bytes: 0X48 0X8D 0X84 0X24   |  Found Operands Bytes: 0X10 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0DF1
+[i] Found Opcode Bytes: 0X48 0X89 0X44 0X24   |  Found Operands Bytes: 0X20
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0DF6
+[i] Found Opcode Bytes: 0X4C 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X30 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0DFE
+[i] Found Opcode Bytes: 0X4C 0X8B 0X84 0X24   |  Found Operands Bytes: 0X70 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0E06
+[i] Found Opcode Bytes: 0X41 0X8B 0XD6
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0E09
+[i] Found Opcode Bytes: 0X48 0X8B 0X8C 0X24   |  Found Operands Bytes: 0XE0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0E11
+[i] Found Opcode Bytes: 0X48 0XFF 0X15   |  Found Operands Bytes: 0XD8 0X0C 0X1E 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0E18
+[i] Found Opcode Bytes: 0XF 0X1F 0X44 0X0   |  Found Operands Bytes: 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0E1D
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0E1F
+[i] Found Opcode Bytes: 0X79   |  Found Operands Bytes: 0X07
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0E21
+[i] Found Opcode Bytes: 0X8B 0XC8
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0E23
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X48 0X23 0XF9 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0E28
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0X10 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0E2F
+[i] Found Opcode Bytes: 0XD1 0XE8
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0E31
+[i] Found Opcode Bytes: 0X3D 0X4 0X1
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0E34
+[i] Found Opcode Bytes: 0X0 0X0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0E36
+[i] Found Opcode Bytes: 0X72   |  Found Operands Bytes: 0X16
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0E38
+[i] Found Opcode Bytes: 0XB9   |  Found Operands Bytes: 0X0B 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0E3D
+[i] Found Opcode Bytes: 0X48 0XFF 0X15   |  Found Operands Bytes: 0XDC 0XF8 0X1D 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0E44
+[i] Found Opcode Bytes: 0XF 0X1F 0X44 0X0   |  Found Operands Bytes: 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0E49
+[i] Found Opcode Bytes: 0XE9   |  Found Operands Bytes: 0XC5 0XFC 0XFF 0XFF
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0E4E
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0E50
+[i] Found Opcode Bytes: 0XF 0X84   |  Found Operands Bytes: 0XBD 0XFC 0XFF 0XFF
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0E56
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X70 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0E5E
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XE0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0E66
+[i] Found Opcode Bytes: 0X4C 0X8D 0X8C 0X24   |  Found Operands Bytes: 0XA0 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0E6E
+[i] Found Opcode Bytes: 0X45 0X33 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0E71
+[i] Found Opcode Bytes: 0X48 0X8B 0X94 0X24   |  Found Operands Bytes: 0X40 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0E79
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X78 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0E81
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X5A 0XD7 0XFB 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0E86
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XE0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0E8D
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0E8F
+[i] Found Opcode Bytes: 0XF 0X88   |  Found Operands Bytes: 0XE8 0XFD 0XFF 0XFF
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0E95
+[i] Found Opcode Bytes: 0X4C 0X8D 0X8C 0X24   |  Found Operands Bytes: 0X98 0X05 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0E9D
+[i] Found Opcode Bytes: 0X45 0X33 0XC0
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0EA0
+[i] Found Opcode Bytes: 0X48 0X8B 0X94 0X24   |  Found Operands Bytes: 0X58 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0EA8
+[i] Found Opcode Bytes: 0X48 0X8D 0X8C 0X24   |  Found Operands Bytes: 0XA8 0X07 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0EB0
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0X2B 0XD7 0XFB 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0EB5
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XE0 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0EBC
+[i] Found Opcode Bytes: 0X85 0XC0
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0EBE
+[i] Found Opcode Bytes: 0XF 0X88   |  Found Operands Bytes: 0XB9 0XFD 0XFF 0XFF
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0EC4
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0ECB
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0X98 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0ED2
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X18 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0EDA
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XA8 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0EE2
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X08 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0EEA
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0XB0 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0EF2
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X98 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0EFA
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X10 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F02
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X70 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F0A
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X38 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0F12
+[i] Found Opcode Bytes: 0X8B 0X84 0X24   |  Found Operands Bytes: 0X98 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0F19
+[i] Found Opcode Bytes: 0X89 0X84 0X24   |  Found Operands Bytes: 0XD4 0X00 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0F20
+[i] Found Opcode Bytes: 0X39 0XBC 0X24   |  Found Operands Bytes: 0X08 0X21 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0F27
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X11
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F29
+[i] Found Opcode Bytes: 0X40 0X38 0XBC 0X24   |  Found Operands Bytes: 0X69 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0F31
+[i] Found Opcode Bytes: 0X89 0XB4 0X24   |  Found Operands Bytes: 0X10 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0F38
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X07
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0F3A
+[i] Found Opcode Bytes: 0X89 0XBC 0X24   |  Found Operands Bytes: 0X10 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F41
+[i] Found Opcode Bytes: 0X44 0X8B 0XBC 0X24   |  Found Operands Bytes: 0X10 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F49
+[i] Found Opcode Bytes: 0X44 0X89 0XBC 0X24   |  Found Operands Bytes: 0X88 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F51
+[i] Found Opcode Bytes: 0X48 0X8B 0X9C 0X24   |  Found Operands Bytes: 0X10 0X03 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F59
+[i] Found Opcode Bytes: 0X48 0X89 0X9C 0X24   |  Found Operands Bytes: 0XC0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F61
+[i] Found Opcode Bytes: 0X48 0X89 0X9C 0X24   |  Found Operands Bytes: 0X98 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F69
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X38 0X06 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F71
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X70 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F79
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0X60 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0F81
+[i] Found Opcode Bytes: 0X48 0X85 0XC0
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0F84
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X11
+
+[i] Current Instruction Length:      0X06
+[i] Accumulated Instructions Length: 0X0F86
+[i] Found Opcode Bytes: 0X39 0XB0   |  Found Operands Bytes: 0X24 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0F8C
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X09
+
+[i] Current Instruction Length:      0X07
+[i] Accumulated Instructions Length: 0X0F8E
+[i] Found Opcode Bytes: 0X48 0X8B 0X98   |  Found Operands Bytes: 0X28 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0F95
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X16
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0F97
+[i] Found Opcode Bytes: 0X48 0X8B 0X94 0X24   |  Found Operands Bytes: 0X00 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0F9F
+[i] Found Opcode Bytes: 0X48 0X85 0XD2
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0FA2
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X1B
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0FA4
+[i] Found Opcode Bytes: 0X39 0X72   |  Found Operands Bytes: 0X20
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0FA7
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X16
+
+[i] Current Instruction Length:      0X04
+[i] Accumulated Instructions Length: 0X0FA9
+[i] Found Opcode Bytes: 0X48 0X8B 0X5A   |  Found Operands Bytes: 0X10
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FAD
+[i] Found Opcode Bytes: 0X48 0X89 0X9C 0X24   |  Found Operands Bytes: 0XC0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FB5
+[i] Found Opcode Bytes: 0X48 0X89 0X9C 0X24   |  Found Operands Bytes: 0X98 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0FBD
+[i] Found Opcode Bytes: 0XEB   |  Found Operands Bytes: 0X3D
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FBF
+[i] Found Opcode Bytes: 0X48 0X8B 0X8C 0X24   |  Found Operands Bytes: 0X40 0X02 0X00 0X00
+
+[i] Current Instruction Length:      0X03
+[i] Accumulated Instructions Length: 0X0FC7
+[i] Found Opcode Bytes: 0X48 0X85 0XC9
+
+[i] Current Instruction Length:      0X02
+[i] Accumulated Instructions Length: 0X0FCA
+[i] Found Opcode Bytes: 0X74   |  Found Operands Bytes: 0X30
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FCC
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0XA8 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FD4
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X18 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FDC
+[i] Found Opcode Bytes: 0X48 0X8B 0X84 0X24   |  Found Operands Bytes: 0XB0 0X04 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FE4
+[i] Found Opcode Bytes: 0X48 0X89 0X84 0X24   |  Found Operands Bytes: 0X08 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FEC
+[i] Found Opcode Bytes: 0X48 0X89 0X8C 0X24   |  Found Operands Bytes: 0XC0 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X08
+[i] Accumulated Instructions Length: 0X0FF4
+[i] Found Opcode Bytes: 0X48 0X89 0X8C 0X24   |  Found Operands Bytes: 0X98 0X01 0X00 0X00
+
+[i] Current Instruction Length:      0X05
+[i] Accumulated Instructions Length: 0X0FFC
+[i] Found Opcode Bytes: 0XE8   |  Found Operands Bytes: 0XB7 0X38 0X07 0X00
+

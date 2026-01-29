@@ -3,11 +3,11 @@
 #include <Windows.h>
 
 #ifdef _M_X64
-#define hUINT unsigned long long
-#define TRAMPOLINE_SIZE = 0x0D
+	#define hUINT unsigned long long
+	#define TRAMPOLINE_SIZE 0x0D
 #elifdef _M_IX86
 	#define hUINT unsigned long
-	
+	#define TRAMPOLINE_SIZE 0x05
 #endif
 enum Register : BYTE
 {
@@ -60,7 +60,7 @@ private:
 	};
 
 	BYTE	curr_instruction_ctx = NULL,
-			contexts_arr[TRAMPOLINE_SIZE + 1] = { NULL };
+			contexts_arr[TRAMPOLINE_SIZE + 1];
 
 	inline BOOLEAN is_curr_ctx_bREX_w();
 
