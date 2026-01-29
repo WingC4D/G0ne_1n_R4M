@@ -60,7 +60,7 @@ private:
 	};
 
 	BYTE	curr_instruction_ctx = NULL,
-		contexts_arr[TRAMPOLINE_SIZE + 1] = { };
+			contexts_arr[TRAMPOLINE_SIZE + 1] = { NULL };
 
 	inline BOOLEAN is_curr_ctx_bREX_w();
 

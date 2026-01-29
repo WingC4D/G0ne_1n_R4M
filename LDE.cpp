@@ -287,17 +287,6 @@ BYTE LDE::get_instruction_length
 	}
 	if (*(LPBYTE)lpCodeBuffer == 0xCC)
 	{
-		
-		/*
-		BYTE last_ctx_index = NULL;
-		 for (BYTE i = 0; i < TRAMPOLINE_SIZE; i++)
-		{
-			if (!contexts_arr[i])
-				break;
-
-			last_ctx_index = i;
-		}
-		*/
 		std::cout << std::format("[!] Found Uninitialised memory @: {:#10X} Now Examining The Last instruction...\n", reinterpret_cast<unsigned long long>(lpCodeBuffer));
 		return NULL;
 	}
@@ -392,18 +381,14 @@ BYTE LDE::get_instruction_length
 				set_curr_inst_len(get_curr_opcode_len() + 4);
 				break;
 			}
-
 		}
 		else if (is_curr_ctx_bREX_w())
 			if (*(lpReferenceBuffer - (get_curr_opcode_len() - 1)) & 0x08)
 			{
 				set_curr_inst_len(get_curr_opcode_len() + 8);
 				break;
-
 			}
-
 		set_curr_inst_len(get_curr_opcode_len() + 4);
-
 		break;
 
 	case imm_four_bytes:
@@ -473,7 +458,6 @@ BYTE LDE::get_instruction_length
 					set_curr_inst_len(get_curr_opcode_len() + 4);
 					break;
 				}
-
 			}
 			else if (is_curr_ctx_bREX_w())
 				if (*(lpReferenceBuffer - (get_curr_opcode_len() - 1)) & 0x08)
@@ -482,11 +466,8 @@ BYTE LDE::get_instruction_length
 					break;
 
 				}
-
 			set_curr_inst_len(get_curr_opcode_len() + 4);
-
 			break;
-
 
 		default:
 			ecStatus = wrong_input;
@@ -516,17 +497,13 @@ BYTE LDE::analyse_group3_mod_rm
 	}
 
 	BYTE ucReg = *(lpCandidate + 1) & 0x38,
-		ucRM = *(lpCandidate + 1) & 0x07,
-		ucMod = *(lpCandidate + 1) & 0xC0,
-		uc_added_opcode_len = 0,
-		uc_added_imm_len = 0;
-
-
-
+		 ucRM  = *(lpCandidate + 1) & 0x07,
+		 ucMod = *(lpCandidate + 1) & 0xC0,
+		 uc_added_opcode_len = 0,
+		 uc_added_imm_len    = 0;
 	switch (*lpCandidate)
 	{
 	case 0xF6:
-		//uc_added_imm_len++;
 		switch (ucMod)
 		{
 		case 0xC0:
@@ -764,6 +741,7 @@ BYTE LDE::analyse_mod_rm
 	}
 	return uc_added_len;
 }
+
 void    LDE::increment_inst_len()
 {
 	if ((curr_instruction_ctx & 0x3C) < 0x3C)
@@ -775,6 +753,7 @@ void    LDE::increment_inst_len()
 	else
 		ecStatus = instruction_overflow;
 }
+
 void    LDE::increment_opcode_len()
 {
 	if ((curr_instruction_ctx & 0x03) < 3)
@@ -786,6 +765,7 @@ void    LDE::increment_opcode_len()
 	else
 		ecStatus = opcode_overflow;
 }
+
 BOOLEAN LDE::analyse_sib_base
 (
 	_In_ BYTE cbCandidate
