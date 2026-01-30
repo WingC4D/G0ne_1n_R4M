@@ -13,26 +13,25 @@ LPBYTE LDE::analyse_last_valid_instruction
 	}
 
 	BYTE	  cbInstructionLength = get_index_ctx_inst_len(cbLastValidIndex),
-		cbOpcodeLength = get_index_opcode_len(cbLastValidIndex);
-	LPBYTE	  lpReferenceAddress = static_cast<LPBYTE>(lpFunctionCodeAddress) + cbAccumulatedLength - cbInstructionLength,
-		lpDisposition = lpReferenceAddress + cbOpcodeLength;
-	BYTE
-		cbRVA = cbInstructionLength;
-	WORD	  wInstructionType = analyse_opcode_type(lpReferenceAddress),
-		wRVA = cbInstructionLength;
-	DWORD	  dwRVA = cbInstructionLength;
-	ULONGLONG ullRVA = cbInstructionLength;
+			  cbOpcodeLength	  = get_index_opcode_len(cbLastValidIndex);
+	LPBYTE	  lpReferenceAddress  = static_cast<LPBYTE>(lpFunctionCodeAddress) + cbAccumulatedLength - cbInstructionLength,
+			  lpDisposition		  = lpReferenceAddress + cbOpcodeLength;
+	BYTE	  cbRVA				  = cbInstructionLength;
+	WORD	  wInstructionType	  = analyse_opcode_type(lpReferenceAddress),
+			  wRVA				  = cbInstructionLength;
+	DWORD	  dwRVA				  = cbInstructionLength;
+	ULONGLONG ullRVA			  = cbInstructionLength;
 
 	switch (wInstructionType)
 	{
-	case returns:
-	case returns | _short:
-	case returns | _near:
-	case returns | _far:
-	case returns | _near | _far:
-	case returns | _short | _near:
-	case returns | _far | _short:
-	case returns | _near | _short | _far:
+	case returns :
+	case returns | _short :
+	case returns | _near  :
+	case returns | _far	  :
+	case returns | _near  | _far   :
+	case returns | _short | _near  :
+	case returns | _far   | _short :
+	case returns | _near  | _short | _far:
 		std::cout << std::format("found a return: {:#x}", (int)*lpReferenceAddress);
 		ecStatus = reached_end_of_function;
 		return lpReferenceAddress;
@@ -102,7 +101,7 @@ LPBYTE LDE::analyse_last_valid_instruction
 
 void LDE::log_1(LPBYTE lpReferenceAddress)
 {
-	WORD cbAccumulatedLength = lpReferenceAddress - lpFunctionCodeAddress,
+	WORD cbAccumulatedLength	   = lpReferenceAddress - lpFunctionCodeAddress,
 		cbCurrentInstructionLength = get_curr_ctx_inst_len();
 
 	std::cout << std::format(
@@ -128,10 +127,7 @@ void LDE::log_2(BYTE cbInstructionCounter)
 {
 	std::cout << "[i] Held contexts: ";
 	for (BYTE i = 0; i < cbInstructionCounter; i++)
-		std::cout << std::format(
-			"{:#4X}, ",
-			contexts_arr[i]
-		);
+		std::cout << std::format("{:#4X}, ", contexts_arr[i]);
 	std::cout << "\n";
 }
 
