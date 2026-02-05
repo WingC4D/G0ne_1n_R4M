@@ -102,10 +102,10 @@ LPBYTE LDE::analyse_last_valid_instruction
 	}
 }
 
-void LDE::log_1(LPBYTE lpReferenceAddress, _In_ const BYTE& ucCurrentInstruction_ctx)
-const {
-	WORD cbAccumulatedLength = lpReferenceAddress - lpFunctionCodeAddress,
-		cbCurrentInstructionLength = get_curr_ctx_inst_len(ucCurrentInstruction_ctx);
+void LDE::log_1(LPBYTE lpReferenceAddress, _In_ const LDE_HOOKING_STATE& state)
+{
+	WORD cbAccumulatedLength = lpReferenceAddress - state.lpFuncAddr,
+		cbCurrentInstructionLength = get_curr_ctx_inst_len(state.curr_instruction_ctx);
 
 	std::cout << std::format(
 		"[i] Current Instruction Length:      {:#04X}\n[i] Accumulated Instructions Length: {:#06X}\n[i] Found Opcode Bytes: ",
@@ -113,11 +113,11 @@ const {
 		cbAccumulatedLength,
 		(uint8_t)*lpReferenceAddress
 	);
-	BYTE ucOpcodeLength = get_curr_opcode_len(ucCurrentInstruction_ctx);
+	BYTE ucOpcodeLength = get_curr_opcode_len(state.curr_instruction_ctx);
 	for (unsigned char i = 0; i < ucOpcodeLength; i++)
 		std::cout << std::format("{:#X} ", *(lpReferenceAddress + i));
 
-	if (get_curr_ctx_inst_len(ucCurrentInstruction_ctx) > ucOpcodeLength) {
+	if (get_curr_ctx_inst_len(state.curr_instruction_ctx) > ucOpcodeLength) {
 		std::cout << "  |  Found Operands Bytes: ";
 		for (BYTE i = ucOpcodeLength; i < cbCurrentInstructionLength; i++)
 			std::cout << std::format("{:#04X} ", *(lpReferenceAddress + i));
