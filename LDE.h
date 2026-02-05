@@ -2,43 +2,61 @@
 #include <iostream>
 #include <Windows.h>
 
-#ifdef _M_X64
-	#define hUINT unsigned long long
-	#define TRAMPOLINE_SIZE 0x0D
-#elifdef _M_IX86
-	#define hUINT unsigned long
-	#define TRAMPOLINE_SIZE 0x05 
-#endif
+#include "Scanner.h"
 
+enum Register : BYTE
+{
+	ax = 0b000,
+	bx = 0b001,
+	cx = 0b010,
+	dx = 0b011,
+	sp = 0b100,
+	bp = 0b101,
+	si = 0b110,
+	di = 0b111
+
+};
+
+enum lde_error_codes : BYTE
+{
+	success,
+	no_input,
+	wrong_input,
+	reached_end_of_function,
+	opcode_overflow,
+	instruction_overflow
+};
+
+typedef struct LDE_HOOKING_STATE
+{
+	BYTE			curr_instruction_ctx = NULL,
+					contexts_arr[TRAMPOLINE_SIZE + 1]{ NULL },
+					rip_relative_indexes[TRAMPOLINE_SIZE + 1]{ NULL };
+	lde_error_codes ecStatus = success;
+	LPVOID			lpFuncAddr = nullptr;
+
+}*LP_LDE_HOOKING_STATE;
 class LDE
 {
 public:
-
 	BYTE getGreaterFullInstLen
 	(
-		_In_ LPVOID lpCodeBuffer
+		_In_ LPVOID* lpCodeBuffer,
+		_Inout_ LDE_HOOKING_STATE& lde_state
 	);
 
-	LPVOID lpFunctionCodeAddress = nullptr;
+	BOOLEAN find_n_fix_relocation
+	(
+		_Inout_ LPBYTE lpGateWayTrampoline,
+		_In_	LPVOID lpTargetFunction,
+		_In_ LDE_HOOKING_STATE& state
+	);
 
 private:
-	enum error_codes : BYTE
-	{
-		success,
-		no_input,
-		wrong_input,
-		reached_end_of_function,
-		opcode_overflow,
-		instruction_overflow
-	};
-
-	
-
-	enum fb_traits : BYTE
-	{
-		none	        = 0x00,
+	enum first_byte_traits: BYTE {
+		none		    = 0x00,
 		has_mod_rm      = 0x01,
-		special	        = 0x02,
+		special		    = 0x02,
 		imm_control     = 0x04,
 		prefix		    = 0x08,
 		imm_one_byte    = 0x10,
@@ -47,128 +65,137 @@ private:
 		imm_eight_bytes = 0x80
 	};
 
-	error_codes ecStatus = success;
-	BYTE	curr_instruction_ctx = NULL,
-			contexts_arr[TRAMPOLINE_SIZE + 1]{ NULL };
-
-	inline BOOLEAN is_curr_ctx_bREX_w
+	inline static BOOLEAN is_curr_ctx_bREX_w
 	(
-		_In_ void
+		_In_ const LDE_HOOKING_STATE& state
 	);
 
-	inline BOOLEAN is_RIP_relative
+	inline static BOOLEAN is_RIP_relative
 	(
-		_In_ void
+		const _In_ LDE_HOOKING_STATE& state
 	);
 
-	inline BYTE	get_curr_ctx_inst_len
+	inline static  BYTE	get_curr_ctx_inst_len
 	(
-		_In_ void
+		_In_ const BYTE& ucCurrentInstruction_ctx
 	);
 
-	inline BYTE	get_curr_opcode_len
+	inline static BYTE	get_curr_opcode_len
 	(
-		_In_ void
+		_In_ const BYTE& state
 	);
 
-	inline BYTE	get_index_ctx_inst_len
+	inline static BYTE	get_index_ctx_inst_len
 	(
-		_In_ BYTE cbIndex
+		_In_ BYTE cbIndex,
+		_Inout_ const LDE_HOOKING_STATE& state
 	);
 
-	inline BYTE	get_index_opcode_len
+	inline static BYTE	get_index_opcode_len
 	(
-		_In_ BYTE cbIndex
+		_In_ BYTE cbIndex,
+		_In_ const LDE_HOOKING_STATE& state
+
 	);
 
-	void log_2
+	void static log_2
 	(
-		_In_ BYTE cbInstructionCounter
+		BYTE cbInstructionCounter,
+		_In_ LDE_HOOKING_STATE& lde_state
 	);
 
-	void   log_1
+	void log_1
 	(
-		_In_ LPBYTE lpReferenceAddress
+		_In_ LPBYTE lpReferenceAddress,
+		_In_ const BYTE& ucCurrentInstruction_ctx
+	)const;
+
+	inline static void increment_opcode_len
+	(
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	inline void increment_opcode_len
+	inline static void increment_inst_len
 	(
-		_In_ void
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	inline void increment_inst_len
+	inline static void reset_curr_ctx
 	(
-		_In_ void
+		_Inout_ LDE_HOOKING_STATE& lde_state
 	);
 
-	inline void	reset_curr_ctx
+	inline static void set_curr_ctx_bRex_w
 	(
-		_In_ void
+		_Inout_ BYTE& ucInstruction_ctx
 	);
 
-	inline void	set_curr_ctx_bRex_w
+	inline static void set_curr_ctx_bRIP_relative
 	(
-		_In_ void
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	inline void set_curr_ctx_bRIP_relative
+	inline static void set_curr_inst_len
 	(
-		_In_ void
+		_In_ BYTE cbInstructionLength,
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	inline void	set_curr_inst_len
+	inline static void	set_curr_opcode_len
 	(
-		_In_ BYTE cbInstructionLength
+		_In_ BYTE cbOpcodeLength,
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	inline void	set_curr_opcode_len
+	BYTE static analyse_special_group
 	(
-		_In_ BYTE cbOpcodeLength
-	);
-
-	BYTE	analyse_special_group
-	(
-		_In_ LPBYTE lpCandidate
+		_In_ LPBYTE lpCandidate,
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
 	inline BYTE	get_instruction_length
 	(
-		_In_ LPVOID lpCodeBuffer
+		_In_ LPVOID lpCodeBuffer,
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	BYTE analyse_mod_rm
+	static BYTE analyse_mod_rm
 	(
-		_In_ LPBYTE lpCandidate
+		_In_ LPBYTE lpCandidate,
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	BYTE analyse_group3_mod_rm
+	static BYTE analyse_group3_mod_rm
 	(
-		_In_ LPBYTE lpCandidate
+		_In_ LPBYTE lpCandidate,
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	BYTE analyse_reg_size_0xF7
+	BYTE static analyse_reg_size_0xF7
 	(
-		_In_ LPBYTE lpCandidate
+		_In_ LPBYTE lpCandidate,
+		_In_ const LDE_HOOKING_STATE& state
 	);
 
-	inline BOOLEAN analyse_sib_base
+	inline static BOOLEAN analyse_sib_base
 	(
 		_In_ BYTE cbCandidate
 	);
 
-	LPBYTE analyse_last_valid_instruction
+	static LPBYTE analyse_last_valid_instruction
 	(
 		_In_ BYTE cbLastValidIndex,
-		_In_ BYTE cbAccumulatedLength
+		_In_ BYTE cbAccumulatedLength,
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	WORD analyse_opcode_type
+	static WORD analyse_opcode_type
 	(
-		_In_ LPBYTE  cbOpcode
+		_In_ LPBYTE  lpCandidate_addr,
+		_Inout_ LDE_HOOKING_STATE& state
 	);
 
-	enum inst_types : WORD
-	{
+	enum instruction_types: WORD {
 		inc				  = 0x0000,
 		dec				  = 0x0001,
 		mov				  = 0x0002,
@@ -201,7 +228,7 @@ private:
 		indirect_dec	  = 0x3002,
 		indirect_call	  = 0x3003,
 		indirect_far_call = 0x3803,
-		indirect_jump     = 0x3004,
+		indirect_jump	  = 0x3004,
 		indirect_far_jump = 0x3804,
 		indirect_push	  = 0x3005,
 		indirect_invalid  = 0x3006,
@@ -228,3 +255,4 @@ protected:
 		prefix, none, prefix, prefix, none, none, has_mod_rm | special, has_mod_rm | special, none, none, none, none, none, none, has_mod_rm, has_mod_rm
 	};
 };
+
