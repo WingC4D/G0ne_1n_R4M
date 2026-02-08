@@ -24,17 +24,6 @@ typedef unsigned long long hUINT;
 #endif
 #endif
 
-/*
-extern "C" {
-
-
-	hkUINT GenerateCompileTimeHashW(IN LPWSTR lpTargetStringToHash);
-
-	hkUINT RandomCompileTimeSeed(IN void);
-
-}
-*/
-
 typedef struct HOOK_CONTEXT
 {
 	LPVOID  lpDetourFunc  = nullptr,

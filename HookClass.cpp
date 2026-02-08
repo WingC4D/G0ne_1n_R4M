@@ -1,26 +1,15 @@
 #include "HookClass.h"
-
-
-
-HookManager::ecManager HookManager::initializeLocally
-(
-	_In_ HANDLE hTargetThread
-)
-{
+HookManager::ecManager HookManager::initializeLocally(_In_ HANDLE hTargetThread) { 
 	if (!hTargetThread) {
 		return noInput;
 	}
-
 	if (hProcess != INVALID_HANDLE_VALUE) {
 		return targetIsNotLocal;
 	}
-
 	if (!pScanner->isThreadInProcess(hTargetThread)) {
 		return threadIsNotInProcess;
 	}
-
 	hThread = hTargetThread;
-
 	return success;
 }
 
@@ -36,8 +25,7 @@ HookManager::ecManager HookManager::CreateLocalHook
 (
 	_In_  LP_HOOK_CONTEXT pCandidateHookData_t, 
 	_Out_ LPWORD lpHookID
-)
-{
+) {
 	if (!pCandidateHookData_t || !lpHookID) {
 		return noInput;
 	}
@@ -81,7 +69,7 @@ HookManager::ecManager HookManager::CreateLocalHook
 	memcpy(&pCandidateHookData_t->org_bytes_arr, pCandidateHookData_t->lpTargetFunc, ucSafeLength);
 	memcpy(lpTrampoline, &pCandidateHookData_t->org_bytes_arr, ucSafeLength);
 
-	lde_.find_n_fix_relocation(lpTrampoline, pCandidateHookData_t->lpTargetFunc, lde_state);
+	LDE::find_n_fix_relocation(lpTrampoline, pCandidateHookData_t->lpTargetFunc, lde_state);
 
 	*pCandidateHookData_t->lpOrgFuncAddr = lpTrampoline;
 
@@ -111,11 +99,7 @@ HookManager::ecManager HookManager::CreateLocalHook
 }
 
 
-HookManager::ecManager HookManager::install_hook
-(
-	_In_ WORD wHookID
-)
-{
+HookManager::ecManager HookManager::install_hook(_In_ WORD wHookID) {
 
 	DWORD dwOldProtections = NULL,
 		  dwOldProtections2 = PAGE_READWRITE;
@@ -141,13 +125,10 @@ HookManager::ecManager HookManager::install_hook
 	return success;
 }
 
-LPBYTE HookManager::generate_nop
-(
-	_In_ BYTE cbDeltaSize
-)
-{
-	if (!cbDeltaSize)
+LPBYTE HookManager::generate_nop(_In_ BYTE cbDeltaSize) {
+	if (!cbDeltaSize) {
 		return nullptr;
+	}
 
 	LPBYTE lpNOP = static_cast<LPBYTE>(HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, cbDeltaSize));
 	if (!lpNOP) {
@@ -188,27 +169,25 @@ LPBYTE HookManager::generate_nop
 	return lpNOP;
 }
 
-HookManager::ecManager  HookManager::uninstall_hook
-(
-	_In_ WORD wHookID
-)
-{
+HookManager::ecManager  HookManager::uninstall_hook(_In_ WORD wHookID) {
 	DWORD dwOldProtections = NULL,
 	      dwOldProtections2 = PAGE_READWRITE;
-	if (wHookID >= wNumberOfHooks)
-	{
+	if (wHookID >= wNumberOfHooks) {
 		return wrong_input;
 	}
-	if (!hkContexts[wHookID].bActive)
+	if (!hkContexts[wHookID].bActive) {
 		return hook_already_inactive;
+	}
 
-	if (!VirtualProtect(hkContexts[wHookID].lpTargetFunc, hkContexts[wHookID].cbHookLength, dwOldProtections2, &dwOldProtections))
+	if (!VirtualProtect(hkContexts[wHookID].lpTargetFunc, hkContexts[wHookID].cbHookLength, dwOldProtections2, &dwOldProtections)) {
 		return failedToAllocateMemory;
+	}
 
 	memcpy(hkContexts[wHookID].lpTargetFunc, &hkContexts[wHookID].org_bytes_arr, hkContexts[wHookID].cbHookLength);
 
-	if (!VirtualProtect(hkContexts[wHookID].lpTargetFunc, hkContexts[wHookID].cbHookLength, dwOldProtections, &dwOldProtections2))
+	if (!VirtualProtect(hkContexts[wHookID].lpTargetFunc, hkContexts[wHookID].cbHookLength, dwOldProtections, &dwOldProtections2)) {
 		return failedToAllocateMemory;
+	}
 
 	hkContexts[wHookID].bActive = FALSE;
 
