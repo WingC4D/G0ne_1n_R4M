@@ -6,13 +6,13 @@ PPEB Scanner::getLocalPeb() {
 	return reinterpret_cast<PPEB>(__readgsqword(0x60));
 #endif
 }
-static hUINT GenerateHashA
+static hkUINT GenerateHashA
 (
 	_In_ LPCSTR lpStringToHash
 )
 {
 	CHAR  cChar;
-	hUINT uiHash = NULL,
+	hkUINT uiHash = NULL,
 		uiSeed = ct::g_Seed;
 	while ((cChar = *lpStringToHash++) != NULL) {
 		uiHash += cChar;
@@ -27,10 +27,10 @@ static hUINT GenerateHashA
 	return uiHash;
 };
 
-static hUINT GenerateHashW(LPWSTR lpStringToHash)
+static hkUINT GenerateHashW(LPWSTR lpStringToHash)
 {
 	WORD  wChar = NULL;
-	hUINT uiHash = NULL;
+	hkUINT uiHash = NULL;
 	while ((wChar = *lpStringToHash++) != NULL) {
 		uiHash += wChar;
 		uiHash += uiHash << (ct::g_Seed & 0x3F);
@@ -236,7 +236,7 @@ BOOLEAN Scanner::validateLocalPEB()
 
 HMODULE Scanner::getModuleHandleH
 (
-	hUINT uiHashedModuleName
+	hkUINT uiHashedModuleName
 )
 {
 	if (!this->validateLocalPEB()) return nullptr;
@@ -261,7 +261,7 @@ HMODULE Scanner::getModuleHandleH
 FARPROC Scanner::getProcAddressH
 (
 	IN       HMODULE hModule,
-	_In_	 hUINT   uiHashedName
+	_In_	 hkUINT   uiHashedName
 )
 {
 	if (!hModule || !uiHashedName) {
@@ -409,16 +409,16 @@ HMODULE Scanner::getLocalModuleHandleByFunction
 
 	do {
 		if (lpFunctionAddress > pCurrLDR_Entry->Reserved2[0] &&
-			(hUINT)lpFunctionAddress < (hUINT)pCurrLDR_Entry->Reserved2[0] + pModuleData->ullImageSize) {
+			(hkUINT)lpFunctionAddress < (hkUINT)pCurrLDR_Entry->Reserved2[0] + pModuleData->ullImageSize) {
 			//std::wcout << L"[!] Found The Desired Function In: " << pCurrLDR_Entry->FullDllName.Buffer;
-			//std::cout << std::format(" Found: {:p}  between {:p} & {:#10x}\n", lpFunctionAddress,  pCurrLDR_Entry->Reserved2[0], reinterpret_cast<hUINT>(pCurrLDR_Entry->Reserved2[0]) + reinterpret_cast<hUINT>(pCurrLDR_Entry->DllBase));
+			//std::cout << std::format(" Found: {:p}  between {:p} & {:#10x}\n", lpFunctionAddress,  pCurrLDR_Entry->Reserved2[0], reinterpret_cast<hkUINT>(pCurrLDR_Entry->Reserved2[0]) + reinterpret_cast<hkUINT>(pCurrLDR_Entry->DllBase));
 			mapModuleData(pCurrLDR_Entry);
 			ecStatus = success;
 			return static_cast<HMODULE>(pCurrLDR_Entry->Reserved2[0]);
 
 		}
 		//std::wcout << "[x] Was Not Found In: " << pCurrLDR_Entry->FullDllName.Buffer;
-		//std::cout << std::format(" between {:p} & {:#10x}\n", pCurrLDR_Entry->Reserved2[0], reinterpret_cast<hUINT>(pCurrLDR_Entry->Reserved2[0]) + reinterpret_cast<hUINT>(pCurrLDR_Entry->DllBase));
+		//std::cout << std::format(" between {:p} & {:#10x}\n", pCurrLDR_Entry->Reserved2[0], reinterpret_cast<hkUINT>(pCurrLDR_Entry->Reserved2[0]) + reinterpret_cast<hkUINT>(pCurrLDR_Entry->DllBase));
 		pCurrListEntry = pCurrListEntry->Flink;
 		pCurrLDR_Entry = reinterpret_cast<PLDR_DATA_TABLE_ENTRY>(pCurrListEntry);
 
@@ -427,7 +427,7 @@ HMODULE Scanner::getLocalModuleHandleByFunction
 	return nullptr;
 }
 
-hUINT Scanner::getFunctionSize(LPVOID lpFunctionAddress)
+hkUINT Scanner::getFunctionSize(LPVOID lpFunctionAddress)
 {
 	if (!lpFunctionAddress) {
 		ecStatus = noInput;
@@ -491,9 +491,9 @@ std::wcout << L"[i] Examining: " << pLdrDataTableEntry->FullDllName.Buffer << "\
 wprintf(L"%p\n[i] Current Candidate:      %p\n[i] Possible End Of Module: %p\n",
 	lpFunctionAddress,
 	pLdrDataTableEntry->Reserved2[0],
-	static_cast<LPBYTE>(pLdrDataTableEntry->Reserved2[0]) + reinterpret_cast<hUINT>(pLdrDataTableEntry->Reserved3[0]));
+	static_cast<LPBYTE>(pLdrDataTableEntry->Reserved2[0]) + reinterpret_cast<hkUINT>(pLdrDataTableEntry->Reserved3[0]));
 printf("%hhd, %hhd\n",
 	pLdrDataTableEntry->Reserved2[0] < lpFunctionAddress,
-	lpFunctionAddress < static_cast<LPBYTE>(pLdrDataTableEntry->Reserved2[0]) + reinterpret_cast<hUINT>(pLdrDataTableEntry->Reserved3[0]));
+	lpFunctionAddress < static_cast<LPBYTE>(pLdrDataTableEntry->Reserved2[0]) + reinterpret_cast<hkUINT>(pLdrDataTableEntry->Reserved3[0]));
 */
 

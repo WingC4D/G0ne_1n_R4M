@@ -15,7 +15,7 @@
 
 #ifdef _M_IX86
 typedef unsigned long	   hUINT
-#define hUINT
+#define hkUINT
 #define TRAMPOLINE_SIZE 0x07
 #elifdef _M_X64
 typedef unsigned long long hUINT;
@@ -28,9 +28,9 @@ typedef unsigned long long hUINT;
 extern "C" {
 
 
-	hUINT GenerateCompileTimeHashW(IN LPWSTR lpTargetStringToHash);
+	hkUINT GenerateCompileTimeHashW(IN LPWSTR lpTargetStringToHash);
 
-	hUINT RandomCompileTimeSeed(IN void);
+	hkUINT RandomCompileTimeSeed(IN void);
 
 }
 */

@@ -13,6 +13,7 @@ enum Register: BYTE {
 	bp = 0b101,
 	si = 0b110,
 	di = 0b111
+
 };
 
 enum lde_error_codes: BYTE {
@@ -25,17 +26,19 @@ enum lde_error_codes: BYTE {
 };
 
 typedef struct LDE_HOOKING_STATE {
-	BYTE			curr_instruction_ctx = NULL,
-					contexts_arr[TRAMPOLINE_SIZE + 1]{ NULL },
-					rip_relative_indexes[TRAMPOLINE_SIZE + 1]{ NULL };
-	lde_error_codes ecStatus = success;
-	LPVOID			lpFuncAddr = nullptr;
-
+	LPVOID			lpFuncAddr			     = nullptr;
+	lde_error_codes ecStatus			     = success;
+	BYTE			curr_instruction_ctx     = NULL,
+					curr_instruction_index   = NULL,
+					curr_rip_instruction_idx = NULL,
+					contexts_arr[TRAMPOLINE_SIZE + 1]{ },
+					rip_relative_indexes[TRAMPOLINE_SIZE + 1]{ };
 } *LP_LDE_HOOKING_STATE;
 
-class LDE {
+class LDE
+{
 public:
-	BYTE getGreaterFullInstLen(_In_ LPVOID* lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& lde_state);
+	BYTE getGreaterFullInstLen(_In_ LPVOID* lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& state);
 
 	static BOOLEAN find_n_fix_relocation(
 		_Inout_ LPBYTE			   lpGateWayTrampoline,
