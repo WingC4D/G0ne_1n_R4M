@@ -104,11 +104,11 @@ private:
 		_In_ LDE_HOOKING_STATE& lde_state
 	);
 
-	void log_1
+	static void log_1
 	(
 		_In_ LPBYTE lpReferenceAddress,
-		_In_ const BYTE& ucCurrentInstruction_ctx
-	)const;
+		_In_ const LDE_HOOKING_STATE& ucCurrentInstruction_ctx
+	);
 
 	inline static void increment_opcode_len
 	(
