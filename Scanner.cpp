@@ -119,11 +119,10 @@ BOOLEAN Scanner::isThreadInProcess(HANDLE hCandidateThread) {
 	}
 	if ((ntStatus = fnNtQueryInfoProc(SystemProcessInformation, pSystemProcInfo_t, ulSysProcInfoSize, &ulFunctionRetSize)) > NULL) {
 		ecStatus = failedToFindSysProcInfo;
-		HeapFree(hHeap, NULL, pSystemProcInfo_t);
+		
 		return FALSE;
 	}
 	if (!ulSysProcInfoSize) {
-		HeapFree(hHeap, NULL, pSystemProcInfo_t);
 		ecStatus = failedToFindSysProcInfoSize;
 		return FALSE;
 	}
