@@ -4,9 +4,9 @@ A Custom, Dependency-Free Dynamic Instrumentation and Hooking Framework for Wind
 
 ## Used Technologies
 
-<p align="center">
+<p align="center"> 
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=py,cpp,vscode,visualstudio,windows" />
+    <img src="https://skillicons.dev/icons?i=cpp,visualstudio,windows,py,vscode"/>
   </a>
 </p>
 
@@ -15,7 +15,7 @@ A Custom, Dependency-Free Dynamic Instrumentation and Hooking Framework for Wind
 This repository aims to house a research-grade hooking engine built from scratch to explore low-level Windows internals, memory management, and defense-evasion techniques.
 
 > [!NOTE]
-> The primary goal of this project was to eliminate reliance on public hooking libraries (such as MinHook, PolyHook, or Detours) and disassembly engines (such as Zydis or Capstone), which often carry static signatures flagged by EDR solutions. Instead, **G0ne_1n_R4M** implements a proprietary Length Disassembly Engine (LDE) and a stateless hooking architecture to maintain a minimal memory footprint and avoid detection.
+> The primary goal of this project was to eliminate reliance on public hooking libraries (such as [MinHook](https://github.com/TsudaKageyu/minhook), [PolyHook](https://github.com/stevemk14ebr/PolyHook_2_0), or [Detours](https://github.com/microsoft/Detours) and disassembly engines (such as [Zydis](https://github.com/zyantific/zydis) or [Capstone](https://github.com/capstone-engine/capstone)), which often carry static signatures flagged by EDR solutions. Instead, **G0ne_1n_R4M** implements a proprietary Length Disassembly Engine (LDE) and a stateless hooking architecture to maintain a minimal memory footprint and avoid detection.
 
 ## Disclaimer
 
@@ -33,7 +33,7 @@ A lightweight, stateless x64 instruction length decoder.
 
 - **Architecture:** Implemented as a utility class (`LDE.cpp`, `LDE.h`) to ensure thread safety without the overhead of per-object instantiation.
 - **Capabilities:**
-    1. **Accurate parsing of variable-length x64 instructions**, including legacy prefixes (`0x66`, `0x67`), REX prefixes, and ModR/M bytes.
+	1. **Accurate parsing of variable-length x64 instructions**, including legacy prefixes (`0x66`, `0x67`), `REX` prefixes, and `ModR/M` bytes.
     2. **Relocation Fixing:** Automatically calculates and corrects RIP-relative displacements when instructions are moved to a trampoline (`find_n_fix_relocation`), preventing execution crashes common in naive hooking implementations.
     3. **Signature Evasion:** Uses a custom, obfuscated opcode lookup table rather than standard open-source tables.
 
@@ -64,7 +64,7 @@ A custom PE parser and memory walker that avoids standard WinAPI calls (`GetProc
 
 This framework is intended to be compiled as a static library or included directly into a loader project.
 
-```c++
+``` cpp
 // Example Usage
 HookManager hookMgr(GetCurrentProcess());
 HOOK_CONTEXT hookCtx;
@@ -85,6 +85,6 @@ hookMgr.uninstall_hook(hookID);
 
 ### To Do List
 
-- [ ] Refactor the `prefix` case.
+- [x] Refactor the `prefix` case.
 - [ ] Implement Control Flow Graph Tracing
 - [ ] Port the symbolic execution engine found in my [IDAPython Deobfuscation Script](https://github.com/WingC4D/IDA-Execution-Flow-Deobfuscating-Script) into this logic to be able to indirectly call stolen `SYSCALL` stubs.
