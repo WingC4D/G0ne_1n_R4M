@@ -11,7 +11,6 @@ LPBYTE LDE::analyse_last_valid_instruction
 		state.ecStatus = wrong_input;
 		return nullptr;
 	}
-
 	BYTE	  cbInstructionLength = get_index_ctx_inst_len(cbLastValidIndex, state),
 			  cbOpcodeLength	  = get_index_opcode_len(cbLastValidIndex, state);
 	LPBYTE	  lpReferenceAddress  = static_cast<LPBYTE>(state.lpFuncAddr) + cbAccumulatedLength - cbInstructionLength,
@@ -21,7 +20,6 @@ LPBYTE LDE::analyse_last_valid_instruction
 			  wRVA				  = cbInstructionLength;
 	DWORD	  dwRVA				  = cbInstructionLength;
 	ULONGLONG ullRVA			  = cbInstructionLength;
-
 	switch (wInstructionType) {
 		case returns :
 		case returns | _short : 
@@ -45,7 +43,6 @@ LPBYTE LDE::analyse_last_valid_instruction
 					}
 					break;
 				}
-
 				case 3: {
 					if (*(lpReferenceAddress - 1) != 0x66 && *(lpReferenceAddress - 2) != 0x66) {
 						dwRVA += *reinterpret_cast<LPDWORD>(lpDisposition);
@@ -54,7 +51,6 @@ LPBYTE LDE::analyse_last_valid_instruction
 					}
 					break;
 				}
-
 				default: {
 					dwRVA += *reinterpret_cast<LPDWORD>(lpDisposition);
 					break;
@@ -62,7 +58,6 @@ LPBYTE LDE::analyse_last_valid_instruction
 			}
 			return lpReferenceAddress + dwRVA;
 		}
-
 		case indirect_call:
 		case indirect_far_call:
 		case indirect_jump:
@@ -73,25 +68,21 @@ LPBYTE LDE::analyse_last_valid_instruction
 					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + cbRVA));
 					return reinterpret_cast<LPBYTE>(*reinterpret_cast<PULONGLONG>(lpReferenceAddress + cbRVA));
 				}
-
 				case 2: {
 					wRVA += *reinterpret_cast<PWORD>(lpDisposition);
 					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + wRVA));
 					return reinterpret_cast<LPBYTE>(*reinterpret_cast<PULONGLONG>(lpReferenceAddress + wRVA));
 				}
-
 				case 4: {
 					dwRVA += *reinterpret_cast<PDWORD>(lpDisposition);
 					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + dwRVA));
 					return reinterpret_cast<LPBYTE>(*reinterpret_cast<PULONGLONG>(lpReferenceAddress + dwRVA));
 				}
-
 				case 8: {
 					ullRVA += *reinterpret_cast<PULONGLONG>(lpDisposition);
 					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + ullRVA));
 					return reinterpret_cast<LPBYTE>(*reinterpret_cast<PULONGLONG>(lpReferenceAddress + ullRVA));
 				}
-
 				default: {
 					state.ecStatus = wrong_input;
 					return nullptr;
@@ -105,8 +96,7 @@ LPBYTE LDE::analyse_last_valid_instruction
 	}
 }
 
-void LDE::log_1(_In_ const LPBYTE lpReferenceAddress, _In_ const LDE_HOOKING_STATE& state)
-{
+void LDE::log_1(_In_ const LPBYTE lpReferenceAddress, _In_ const LDE_HOOKING_STATE& state) {
 	WORD cbAccumulatedLength		= lpReferenceAddress - state.lpFuncAddr,
 		 cbCurrentInstructionLength = get_curr_ctx_inst_len(state.curr_instruction_ctx);
 	BYTE ucOpcodeLength = get_curr_opcode_len(state.curr_instruction_ctx);
@@ -136,29 +126,21 @@ void LDE::log_2(BYTE cbInstructionCounter, _In_ LDE_HOOKING_STATE& lde_state) {
 	std::cout << "\n";
 }
 
-BYTE LDE::getGreaterFullInstLen
-(
-	_In_ LPVOID *lpCodeBuffer,
-	_Inout_ LDE_HOOKING_STATE& lde_state
-)
-{
+BYTE LDE::getGreaterFullInstLen(_In_ LPVOID *lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& lde_state) {
 	if (!lpCodeBuffer) {
 		lde_state.ecStatus = no_input;
 		return NULL;
 	}
+	lde_state.lpFuncAddr = *lpCodeBuffer;
 	BYTE   cbAccumulatedLength  = NULL,
 		   cbInstructionCounter = NULL;
 	LPBYTE lpReferenceBuffer	= static_cast<LPBYTE>(*lpCodeBuffer);
-	lde_state.lpFuncAddr = *lpCodeBuffer;
-
 	while (cbAccumulatedLength < TRAMPOLINE_SIZE && lde_state.ecStatus == success) {
 		if (*lpReferenceBuffer == 0xC3) {
 			lde_state.ecStatus = reached_end_of_function;
 			break;
 		}
-		
 		BYTE cbCurrentInstructionLength = get_instruction_length(lpReferenceBuffer, lde_state);
-		
 		if (!cbCurrentInstructionLength) {
 			if (!(lpReferenceBuffer = analyse_last_valid_instruction(cbInstructionCounter - 1, cbAccumulatedLength, lde_state))) {
 				return NULL;
@@ -199,11 +181,9 @@ BOOLEAN LDE::find_n_fix_relocation
 		state.ecStatus = no_input;
 		return FALSE;
 	}
-
 	BYTE *lpRipRelativeAddress = static_cast<LPBYTE>(state.lpFuncAddr),
 		  j					  = NULL,
 		  cbAccumulatedLength = NULL;
-
 	for (BYTE i = NULL; i < TRAMPOLINE_SIZE; i++) {
 		if (!state.contexts_arr[i]) {
 			break;
@@ -226,8 +206,7 @@ BOOLEAN LDE::find_n_fix_relocation
 	return TRUE;
 }
 
-BOOLEAN LDE::is_curr_ctx_bREX_w(_In_ const LDE_HOOKING_STATE& state)
-{
+BOOLEAN LDE::is_curr_ctx_bREX_w(_In_ const LDE_HOOKING_STATE& state) {
 	return (state.curr_instruction_ctx & 0x40) >> 6;
 }
 
@@ -505,7 +484,6 @@ BYTE LDE::analyse_group3_mod_rm
 			}
 			break;
 		}
-
 		case 0xF7: {
 			switch (ucMod) {
 				case 0xC0: {
@@ -548,7 +526,6 @@ BYTE LDE::analyse_group3_mod_rm
 			}
 			break;
 		}
-
 		default: {
 			state.ecStatus = wrong_input;
 			return NULL;
@@ -571,7 +548,6 @@ BYTE LDE::analyse_reg_size_0xF7
 			}
 			return 2;
 		}
-
 		case 3: {
 			if (*(lpCandidate - 1) != 0x66 && *(lpCandidate - 2) != 0x66) {
 				return 4;
@@ -632,14 +608,12 @@ BYTE LDE::analyse_special_group
 	}
 }
 
-
 BYTE LDE::analyse_mod_rm
 (
 	_In_ LPBYTE lpCandidate,
 	_Inout_ LDE_HOOKING_STATE& state
 )
 {
-
 	BYTE cbRM				 = *lpCandidate & 0x07,
 		 cbReg				 = *lpCandidate & 0x38,
 	     cbMod				 = *lpCandidate & 0xC0,
@@ -649,7 +623,6 @@ BYTE LDE::analyse_mod_rm
 		state.ecStatus = no_input;
 		return NULL;
 	}
-
 	switch (cbMod) {
 		case 0xC0: {
 			break;
@@ -724,11 +697,7 @@ BOOLEAN LDE::analyse_sib_base(_In_ BYTE cbCandidate) {
 	return (cbCandidate & 7) == 5;
 }
 
-WORD LDE::analyse_opcode_type
-(
-	_In_ LPBYTE lpCandidate_addr,
-	_Inout_ LDE_HOOKING_STATE& state
-)
+WORD LDE::analyse_opcode_type(_In_ LPBYTE lpCandidate_addr, _Inout_ LDE_HOOKING_STATE& state)
 {
 	switch (*lpCandidate_addr)  {
 		case 0xE8: {
