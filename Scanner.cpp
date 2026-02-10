@@ -300,8 +300,7 @@ PIMAGE_EXPORT_DIRECTORY Scanner::getImageExportDirectory(LPBYTE pImageBase)
 	return nullptr;
 }
 
-Scanner::scannerErrorCode Scanner::mapModuleData(PLDR_DATA_TABLE_ENTRY lpModuleLDR)
-{
+Scanner::scannerErrorCode Scanner::mapModuleData(PLDR_DATA_TABLE_ENTRY lpModuleLDR) {
 	PIMAGE_OPTIONAL_HEADER pImageOptionalHeader = get_image_optional_headers((LPBYTE)lpModuleLDR->Reserved2[0]);
 
 	PIMAGE_EXPORT_DIRECTORY pImageExportDirectory = reinterpret_cast<PIMAGE_EXPORT_DIRECTORY>((LPBYTE)lpModuleLDR->Reserved2[0] + pImageOptionalHeader->DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);
@@ -315,7 +314,7 @@ Scanner::scannerErrorCode Scanner::mapModuleData(PLDR_DATA_TABLE_ENTRY lpModuleL
 			return failedToAllocateMemory;
 		}
 	}
-	pModuleData->ullImageSize		 = pImageOptionalHeader->SizeOfImage;
+	pModuleData->ullImageSize		 = reinterpret_cast<DWORD64>(lpModuleLDR->DllBase);
 	pModuleData->pModuleLDR			 = lpModuleLDR;
 	pModuleData->lpModuleBaseAddr	 = static_cast<LPBYTE>(pModuleData->pModuleLDR->Reserved2[0]);
 	pModuleData->lpFunctionsRVA_arr  = reinterpret_cast<LPDWORD>(pModuleData->lpModuleBaseAddr + pImageExportDirectory->AddressOfFunctions);

@@ -29,14 +29,13 @@ typedef struct LDE_HOOKING_STATE {
 	LPVOID			lpFuncAddr			     = nullptr;
 	lde_error_codes ecStatus			     = success;
 	BYTE			curr_instruction_ctx     = NULL,
-					curr_instruction_index   = NULL,
-					curr_rip_instruction_idx = NULL,
+					cb_count_of_instructions = NULL,
+					cb_count_of_rip_indexes	 = NULL,
 					contexts_arr[TRAMPOLINE_SIZE + 1]{ },
 					rip_relative_indexes[TRAMPOLINE_SIZE + 1]{ };
 } *LP_LDE_HOOKING_STATE;
 
-class LDE
-{
+class LDE {
 public:
 	BYTE getGreaterFullInstLen(_In_ LPVOID* lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& state);
 
