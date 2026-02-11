@@ -214,6 +214,7 @@ HMODULE Scanner::getModuleHandleH(hkUINT uiHashedModuleName) {
 
 	return nullptr;
 }
+
 FARPROC Scanner::getProcAddressH(
 	IN       HMODULE hModule,
 	_In_	 hkUINT   uiHashedName
@@ -248,7 +249,6 @@ FARPROC Scanner::getProcAddressH(
 	ecStatus = failedToFindTargetFuncOrdinal;
 	return nullptr;
 }
-
 
 PIMAGE_OPTIONAL_HEADER Scanner::get_image_optional_headers(LPBYTE pImageBase) {
 	if (!pImageBase) {

@@ -12,6 +12,8 @@
 #ifndef HUINT
 #define LOCAL_PROCESS_HANDLE reinterpret_cast<HANDLE>(-1)
 #define LOCAL_THREAD_HANDLE  reinterpret_cast<HANDLE>(-2)
+#define MAX_ITERATIONS 0x08000
+#define PAGE_SIZE	   0x10000
 
 #ifdef _M_IX86
 typedef unsigned long	   hUINT
@@ -24,8 +26,7 @@ typedef unsigned long long hUINT;
 #endif
 #endif
 
-typedef struct HOOK_CONTEXT
-{
+typedef struct HOOK_CONTEXT {
 	LPVOID  lpDetourFunc  = nullptr,
 		   *lpOrgFuncAddr = nullptr,
 		    lpTargetFunc  = nullptr;
@@ -36,16 +37,14 @@ typedef struct HOOK_CONTEXT
 
 } *LP_HOOK_CONTEXT;
 
-typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation)
-(
+typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation) (
 	SYSTEM_INFORMATION_CLASS SystemInformationClass,
 	PVOID                    SystemInformation,
 	ULONG                    SystemInformationLength,
 	PULONG                   ReturnLength
 );
 
-typedef NTSTATUS (WINAPI *fnNtQueryInformationProcess)
-(
+typedef NTSTATUS (WINAPI *fnNtQueryInformationProcess) (
 	_In_	  HANDLE           hProcessHandle,
 	_In_	  PROCESSINFOCLASS process_information_class_t,
 	_Out_	  PVOID            pProcessInformation,
@@ -53,14 +52,12 @@ typedef NTSTATUS (WINAPI *fnNtQueryInformationProcess)
 	_Out_opt_ PULONG           pulReturnLength
 );
 
-class HookManager
-{
+class HookManager {
 public:
-	PScanner	   pScanner;
-	WORD		   wNumberOfHooks;
+	PScanner			    pScanner;
+	WORD				    wNumberOfHooks;
 	std::deque<HOOK_CONTEXT>hkContexts;
-
-	typedef enum ecManager : UCHAR {
+	typedef enum ecManager: UCHAR {
 		success,
 		noInput,
 		failedToConstructClass,
@@ -117,14 +114,14 @@ static	LPBYTE generate_nop
 	);
 
 private:
-	HANDLE			hHeap,
-					hThread,
-					hProcess;
-	DWORD			dwTargetPID;
-	ecManager		ecStatus;
-	BOOLEAN			bIsTargetLocal;
-	BYTE			cbHookSize;
-	LP_HOOK_CONTEXT lpHookData_t;
-	LDE				lde_;
+	HANDLE			hHeap		   = GetProcessHeap(),
+				    hThread		   = LOCAL_THREAD_HANDLE,
+				    hProcess	   = INVALID_HANDLE_VALUE;
+	DWORD			dwTargetPID	   = GetCurrentProcessId();
+	ecManager		ecStatus	   = success;
+	BOOLEAN			bIsTargetLocal = TRUE;
+	BYTE			cbHookSize	   = NULL;
+	LP_HOOK_CONTEXT lpHookData_t   = static_cast<LP_HOOK_CONTEXT>(malloc(sizeof(HOOK_CONTEXT)));
+	LDE				lde_ = LDE();
 };
 

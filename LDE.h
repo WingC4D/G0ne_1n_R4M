@@ -4,6 +4,11 @@
 
 #include "Scanner.h"
 
+#define SIZE_OF_BYTE  1
+#define SIZE_OF_WORD  2
+#define SIZE_OF_DWORD 4
+#define SIZE_OF_QWORD 8
+
 enum Register: BYTE {
 	ax = 0b000,
 	bx = 0b001,
@@ -13,7 +18,6 @@ enum Register: BYTE {
 	bp = 0b101,
 	si = 0b110,
 	di = 0b111
-
 };
 
 enum lde_error_codes: BYTE {
@@ -39,11 +43,7 @@ class LDE {
 public:
 	BYTE getGreaterFullInstLen(_In_ LPVOID* lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& state);
 
-	static BOOLEAN find_n_fix_relocation(
-		_Inout_ LPBYTE			   lpGateWayTrampoline,
-		_In_	LPVOID			   lpTargetFunction,
-		_In_    LDE_HOOKING_STATE& state
-	);
+	static BOOLEAN find_n_fix_relocation(_Inout_ LPBYTE lpGateWayTrampoline, _In_ LPVOID lpTargetFunction, _In_  LDE_HOOKING_STATE& state);
 
 private:
 	enum first_byte_traits: BYTE {
@@ -63,13 +63,13 @@ private:
 
 	inline static BOOLEAN is_RIP_relative(const _In_ LDE_HOOKING_STATE& state);
 
-	inline static BYTE get_curr_ctx_inst_len(_In_ const BYTE& ucCurrentInstruction_ctx);
+	inline static BYTE get_context_instruction_length(_In_ const BYTE& ucCurrentInstruction_ctx);
 					   
 	inline static BYTE get_curr_opcode_len(_In_ const BYTE& state);
 
-	inline static BYTE get_index_ctx_inst_len(_In_ const BYTE cbIndex, _Inout_ const LDE_HOOKING_STATE& state);
+	inline static BYTE get_index_ctx_inst_len(_In_ BYTE cbIndex, _Inout_ const LDE_HOOKING_STATE& state);
 
-	inline static BYTE get_index_opcode_len(_In_ const BYTE cbIndex, _In_ const LDE_HOOKING_STATE& state);
+	inline static BYTE get_index_opcode_len(_In_ BYTE cbIndex, _In_ const LDE_HOOKING_STATE& state);
 
 	inline static void increment_opcode_len(_Inout_ LDE_HOOKING_STATE& state);
 
@@ -85,9 +85,9 @@ private:
 
 	inline static void set_curr_opcode_len(_In_ BYTE cbOpcodeLength,_Inout_ LDE_HOOKING_STATE& state);
 
-	static void log_2(_In_ const BYTE cbInstructionCounter, _In_ LDE_HOOKING_STATE& lde_state);
+	static void log_2(_In_ BYTE cbInstructionCounter, _In_ LDE_HOOKING_STATE& lde_state);
 
-	static void log_1(_In_ const LPBYTE lpReferenceAddress, _In_ const LDE_HOOKING_STATE& state);
+	static void log_1(_In_ LPBYTE lpReferenceAddress, _In_ const LDE_HOOKING_STATE& state);
 
 	static BYTE analyse_special_group(_In_ LPBYTE lpCandidate, _Inout_ LDE_HOOKING_STATE& state);
 

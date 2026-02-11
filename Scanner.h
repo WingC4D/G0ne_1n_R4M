@@ -9,12 +9,12 @@
 #define LOCAL_THREAD_HANDLE  reinterpret_cast<HANDLE>(-2)
 
 	#ifdef _M_IX86
-	typedef unsigned long	   hUINT
-	#define hkUINT
-	#define TRAMPOLINE_SIZE 0x07
+	typedef unsigned long	   hkUINT
+	#define HKUINT
+	#define TRAMPOLINE_SIZE 0x05
 	#elifdef _M_X64
 	typedef unsigned long long hkUINT;
-	#define HUINT
+	#define HKUINT
 	#define TRAMPOLINE_SIZE 0x0D
 	#endif
 #endif
@@ -64,9 +64,9 @@ namespace ct {
 
 		return uiHash;
 	};
-	constexpr hkUINT nt_dll = ctGenerateHashW(L"ntdll.dll");
+	constexpr hkUINT nt_dll			    = ctGenerateHashW(L"ntdll.dll");
 	constexpr hkUINT nt_query_info_proc = ctGenerateHashA("NtQueryInformationProcess");
-	constexpr hkUINT nt_query_sys_info = ctGenerateHashA("NtQuerySystemInformation");
+	constexpr hkUINT nt_query_sys_info  = ctGenerateHashA("NtQuerySystemInformation");
 }
 typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation)(
 	SYSTEM_INFORMATION_CLASS SystemInformationClass,
@@ -76,28 +76,28 @@ typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation)(
 );
 
 typedef NTSTATUS(WINAPI* fnNtQueryInformationProcess) (
-	IN              HANDLE           hProcessHandle,
-	IN              PROCESSINFOCLASS process_information_class_t,
-	OUT          PVOID            pProcessInformation,
-	IN              ULONG            ulProcessInfoLength,
-	OUT OPTIONAL PULONG           pulReturnLength
+	_In_	  HANDLE           hProcessHandle,
+	_In_	  PROCESSINFOCLASS process_information_class_t,
+	_Out_	  PVOID			   pProcessInformation,
+	_In_      ULONG			   ulProcessInfoLength,
+	_Out_opt_ PULONG		   pulReturnLength
 );
+#endif
 
 typedef struct MODULE_DATA {
 	LPBYTE				  lpModuleBaseAddr;
 	LPDWORD				  lpFunctionsRVA_arr,
-		lpNamesRVA_arr;
+						  lpNamesRVA_arr;
 	LPWORD				  lpOrdsRVA_arr;
 	PLDR_DATA_TABLE_ENTRY pModuleLDR;
 	DWORD				  dwNumberOfNames,
 						  dwNumberOfFunctions;
-	DWORD64 ullImageSize;
+	DWORD64				  ullImageSize;
 }*MODULE_DATA_PTR;
-#endif
 
 typedef class Scanner {
 public:
-	enum scannerErrorCode : UCHAR {
+	enum scannerErrorCode: UCHAR {
 		success,
 		noInput,
 		badProcessHandle,
@@ -135,7 +135,7 @@ public:
 
 	HMODULE getLocalModuleHandleByFunction(LPVOID lpFunctionAddress);
 
-	scannerErrorCode getLastError() const;
+	scannerErrorCode getLastError(_In_ void) const;
 
 	BOOLEAN isThreadInProcess(_In_ HANDLE hCandidateThread);
 
@@ -147,17 +147,20 @@ private:
 	BOOLEAN				  bIsLocal;
 	scannerErrorCode	  ecStatus;
 
-	HMODULE getModuleHandleH(IN hkUINT uiHashedModuleName);
+	HMODULE getModuleHandleH(_In_ hkUINT uiHashedModuleName);
 
-	WORD getFuncOrdinal(IN LPVOID  lpFunction);
+	WORD getFuncOrdinal(_In_ LPVOID lpFunction);
 
-	FARPROC getProcAddressH(IN HMODULE hModule, IN hkUINT   uiHashedName);
+	FARPROC getProcAddressH(_In_ HMODULE hModule, _In_ hkUINT uiHashedName);
 
-	PPEB getLocalPeb(IN void);
+	PPEB getLocalPeb(_In_ void);
 
-	BOOLEAN validateLocalPEB(IN void);
-	PIMAGE_OPTIONAL_HEADER get_image_optional_headers(LPBYTE pImageBase);
-	PIMAGE_EXPORT_DIRECTORY getImageExportDirectory(LPBYTE pImageBase);
-	BOOLEAN isThreadLocal(HANDLE hThread);
+	BOOLEAN validateLocalPEB(_In_ void);
+
+	PIMAGE_OPTIONAL_HEADER get_image_optional_headers(_In_ LPBYTE pImageBase);
+
+	PIMAGE_EXPORT_DIRECTORY getImageExportDirectory(_In_ LPBYTE pImageBase);
+
+	BOOLEAN isThreadLocal(_In_ HANDLE hThread);
 } *PScanner;
 
