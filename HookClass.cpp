@@ -40,13 +40,11 @@ HookManager::ecManager HookManager::CreateLocalHook(_In_ HOOK_CONTEXT& candidate
 	* reinterpret_cast<LPVOID*>(&ucTrampoline_arr[2]) = lpReference;
 	memcpy(&lpGateway[candidate_hook_ctx.cbHookLength], &ucTrampoline_arr, candidate_hook_ctx.cbHookLength);
 	if (cbDelta) {
-		LPBYTE lpNop = generate_nop(cbDelta);
-		if (!lpNop) {
-			ecStatus = failedToAllocateMemory;
+		generate_nop(cbDelta, candidate_hook_ctx.patched_bytes_arr);
+		if (!candidate_hook_ctx.patched_bytes_arr[0]) {
+			ecStatus = wrong_input;
 			return ecStatus;
 		}
-		memcpy(&candidate_hook_ctx.patched_bytes_arr, lpNop, cbDelta);
-		HeapFree(GetProcessHeap(), NULL, lpNop);
 	}
 	memcpy(&candidate_hook_ctx.patched_bytes_arr[cbDelta], &ucHook_arr, TRAMPOLINE_SIZE);
 	DWORD  dwOldProtections	= NULL;
@@ -77,37 +75,29 @@ HookManager::ecManager HookManager::install_hook(_In_ WORD wHookID) {
 	return success;
 }
 
-LPBYTE HookManager::generate_nop(_In_ BYTE cbDeltaSize) {
-	if (!cbDeltaSize) {
-		return nullptr;
-	}
-	LPVOID lpNOP = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, cbDeltaSize);
-	if (!lpNOP) {
-		return nullptr;
-	}
+void HookManager::generate_nop(_In_ BYTE cbDeltaSize, _Inout_ BYTE lpNopNeededAddress[]) {
 	switch (cbDeltaSize) {
 		case 1:
-			*static_cast<LPBYTE>(lpNOP)  = 0x90;
+			*lpNopNeededAddress  = 0x90;
 			break;
 		case 2:
-			*static_cast<LPWORD>(lpNOP)  = 0x9066;
+			*reinterpret_cast<LPWORD>(lpNopNeededAddress)  = 0x9066;
 			break;
 		case 3:
-			*static_cast<LPDWORD>(lpNOP) = 0x1F0F;
+			*reinterpret_cast<LPDWORD>(lpNopNeededAddress) = 0x1F0F;
 			break;
 		case 4:
-			*static_cast<LPDWORD>(lpNOP) = 0x401F0F;
+			*reinterpret_cast<LPDWORD>(lpNopNeededAddress) = 0x401F0F;
 			break;
 		case 5:
-			*static_cast<LPDWORD>(lpNOP) = 0x441F0F;
+			*reinterpret_cast<LPDWORD>(lpNopNeededAddress) = 0x441F0F;
 			break;
 		case 6:
-			*static_cast<LPDWORD>(lpNOP) = 0x66441F0F;
+			*reinterpret_cast<LPDWORD>(lpNopNeededAddress) = 0x66441F0F;
 			break;
 		default:
-			return nullptr;
+			return;
 	}
-	return static_cast<LPBYTE>(lpNOP);
 }
 
 HookManager::ecManager  HookManager::uninstall_hook(_In_ WORD wHookID) {

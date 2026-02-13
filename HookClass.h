@@ -55,6 +55,7 @@ public:
 	typedef enum ecManager : UCHAR {
 		success,
 		noInput,
+		wrongInput,
 		failedToConstructClass,
 		failedToGetProcessHeap,
 		failedToAllocateMemory,
@@ -80,7 +81,7 @@ public:
 
 	ecManager attachToThread(HANDLE hThread);
 
-	static LPBYTE generate_nop(BYTE cbDeltaSize);
+	static void generate_nop(BYTE cbDeltaSize, _Inout_ BYTE lpNopNeededAddress[]);
 
 	ecManager install_hook(WORD wHookID);
 
