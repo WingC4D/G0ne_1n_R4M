@@ -30,6 +30,7 @@ typedef struct LDE_HOOKING_STATE {
 					cb_count_of_instructions,
 					cb_count_of_rip_indexes,
 					contexts_arr[TRAMPOLINE_SIZE],
+					prefix_count_arr[TRAMPOLINE_SIZE],
 					rip_relative_indexes[TRAMPOLINE_SIZE];
 } *LP_LDE_HOOKING_STATE;
 
@@ -96,6 +97,10 @@ private:
 	static WORD analyse_opcode_type(_In_ LPBYTE  lpCandidate_addr, _Inout_ LDE_HOOKING_STATE& state);
 
 	static LPBYTE analyse_last_valid_instruction(_In_ BYTE cbLastValidIndex,_In_ BYTE cbAccumulatedLength, _Inout_ LDE_HOOKING_STATE& state);
+
+	static BYTE get_current_prefix_count(const LDE_HOOKING_STATE& state);
+
+	static BYTE get_index_prefix_count(LDE_HOOKING_STATE& state, const BYTE ucIndex);
 
 	enum instruction_types: WORD {
 		inc				  = 0x0000,
