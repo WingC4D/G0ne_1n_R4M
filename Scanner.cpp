@@ -1,8 +1,8 @@
 ﻿#include "Scanner.h"
 PPEB Scanner::getLocalPeb() {
 #ifdef _M_IX86_
-	return reinterpret_cast<PPEB>(__readfsbyte(0x30));
-#elif _WIN64
+	return reinterpret_cast<PPEB>(__readfsdword(0x30));
+#elif _M_X64
 	return reinterpret_cast<PPEB>(__readgsqword(0x60));
 #endif
 }
@@ -39,47 +39,6 @@ hkUINT GenerateHashW(LPWSTR lpStringToHash) {
 	return uiHash;
 }
 
-Scanner::Scanner(_In_ HANDLE hTargetProcess) {
-	dwTargetTID = NULL;
-	dwTargetPID = NULL;
-	hProcess = nullptr;
-	hThread = nullptr;
-	pModuleData = nullptr;
-	wTargetOrdinal = NULL;
-	dwFuncSize = NULL;
-	hHeap = GetProcessHeap();
-	if (!hHeap || hHeap == INVALID_HANDLE_VALUE) {
-		ecStatus = failedToGetHeapHandle;
-		return;
-	}
-	if (hTargetProcess == INVALID_HANDLE_VALUE) {
-		bIsLocal = TRUE;
-	} else if (!hTargetProcess) {
-		hTargetProcess = INVALID_HANDLE_VALUE;
-		bIsLocal = TRUE;
-	} else {
-		std::cout << "[i] You still haven't designed a remote process hooking system!\n";
-		bIsLocal = FALSE;
-		ecStatus = notBuiltYet;
-		return;
-	}
-	if (!(dwTargetPID = GetProcessId(hTargetProcess))) {
-		ecStatus = badProcessHandle;
-		return;
-	}
-	hProcess = hTargetProcess;
-	if (bIsLocal) {
-		if (!(pTargetPEB = getLocalPeb())) {
-			ecStatus = failedToFetchLocalPEB;
-			return;
-		}
-	} else {
-		ecStatus = notBuiltYet;
-		return;
-	}
-	ecStatus = success;
-}
-
 BOOLEAN Scanner::isThreadInProcess(HANDLE hCandidateThread) {
 	if (!hCandidateThread || hCandidateThread == INVALID_HANDLE_VALUE) {
 		ecStatus = noInput;
@@ -93,9 +52,7 @@ BOOLEAN Scanner::isThreadInProcess(HANDLE hCandidateThread) {
 		ecStatus = invalidHandle;
 		return FALSE;
 	}
-
 	fnNtQuerySystemInformation fnNtQueryInfoProc = reinterpret_cast<fnNtQuerySystemInformation>(getProcAddressH(getModuleHandleH(ct::nt_dll), ct::nt_query_sys_info));
-
 	if (!fnNtQueryInfoProc) {
 		ecStatus = failedToFindNtQuerySysInfo;
 		return FALSE;
@@ -105,9 +62,7 @@ BOOLEAN Scanner::isThreadInProcess(HANDLE hCandidateThread) {
 	ULONG					    ulSysProcInfoSize  = NULL,
 								ulFunctionRetSize  = NULL;
 	NTSTATUS				    ntStatus		   = ERROR_SUCCESS;
-
 	fnNtQueryInfoProc(SystemProcessInformation, nullptr, NULL, &ulSysProcInfoSize);
-
 	if (!ulSysProcInfoSize) {
 		ecStatus = failedToFindSysProcInfoSize;
 		return FALSE;
@@ -166,8 +121,8 @@ BOOLEAN Scanner::isThreadLocal(HANDLE hThread) {
 		}
 		case reinterpret_cast<hkUINT>(nullptr):
 		case reinterpret_cast<hkUINT>(INVALID_HANDLE_VALUE): {
-				hThread = LOCAL_THREAD_HANDLE;
-				return TRUE;
+			hThread = LOCAL_THREAD_HANDLE;
+			return TRUE;
 		}
 		default: {
 			if (!(pNtQuerySysInfo = reinterpret_cast<fnNtQueryInformationProcess>(getProcAddressH(getModuleHandleH(ct::nt_dll), ct::nt_query_info_proc)))) {
@@ -214,7 +169,6 @@ HMODULE Scanner::getModuleHandleH(hkUINT uiHashedModuleName) {
 
 	return nullptr;
 }
-
 FARPROC Scanner::getProcAddressH(
 	IN       HMODULE hModule,
 	_In_	 hkUINT   uiHashedName
@@ -249,6 +203,7 @@ FARPROC Scanner::getProcAddressH(
 	ecStatus = failedToFindTargetFuncOrdinal;
 	return nullptr;
 }
+
 
 PIMAGE_OPTIONAL_HEADER Scanner::get_image_optional_headers(LPBYTE pImageBase) {
 	if (!pImageBase) {
@@ -314,7 +269,7 @@ Scanner::scannerErrorCode Scanner::mapModuleData(PLDR_DATA_TABLE_ENTRY lpModuleL
 			return failedToAllocateMemory;
 		}
 	}
-	pModuleData->ullImageSize		 = reinterpret_cast<DWORD64>(lpModuleLDR->DllBase);
+	pModuleData->ullImageSize		 = pImageOptionalHeader->SizeOfImage;
 	pModuleData->pModuleLDR			 = lpModuleLDR;
 	pModuleData->lpModuleBaseAddr	 = static_cast<LPBYTE>(pModuleData->pModuleLDR->Reserved2[0]);
 	pModuleData->lpFunctionsRVA_arr  = reinterpret_cast<LPDWORD>(pModuleData->lpModuleBaseAddr + pImageExportDirectory->AddressOfFunctions);
@@ -326,7 +281,7 @@ Scanner::scannerErrorCode Scanner::mapModuleData(PLDR_DATA_TABLE_ENTRY lpModuleL
 	return success;
 }
 
-HMODULE Scanner::getLocalModuleHandleByFunction(LPVOID lpFunctionAddress) {
+HMODULE Scanner::get_local_module_handle_by_function(LPVOID lpFunctionAddress) {
 	if (!validateLocalPEB()) {
 		ecStatus = failedToFetchLocalPEB;
 		return nullptr;
@@ -360,12 +315,11 @@ WORD Scanner::getFuncOrdinal(LPVOID lpFunctionAddress) {
 		ecStatus = noInput;
 		return NULL;
 	}
-	HMODULE hModule = getLocalModuleHandleByFunction(lpFunctionAddress);
+	HMODULE hModule = get_local_module_handle_by_function(lpFunctionAddress);
 	if (!hModule) {
 		ecStatus = failedToFindModule;
 		return 0;
 	}
-
 	for (DWORD i = 0; i < pModuleData->dwNumberOfFunctions; i++) {
 		if (lpFunctionAddress == reinterpret_cast<LPVOID>(pModuleData->lpModuleBaseAddr + pModuleData->lpFunctionsRVA_arr[pModuleData->lpOrdsRVA_arr[i]])) {
 			ecStatus = success;
@@ -374,4 +328,22 @@ WORD Scanner::getFuncOrdinal(LPVOID lpFunctionAddress) {
 	}
 	ecStatus = failedToFindTargetFuncOrdinal;
 	return 0;
+}
+
+LPVOID Scanner::get_adjacent_memory_i32bit(HMODULE hModule) const {
+	WORD wIterations = 1;//the last byte of the dll's size is allocated for the dll, let's start looking on the next page
+	MEMORY_BASIC_INFORMATION MemBasicInfo_t{ };
+	while (wIterations < MAX_ITERATIONS) {
+		DWORD64 llModuleBaseOffset = pModuleData->ullImageSize + wIterations * PAGE_SIZE;
+		if (!VirtualQuery(hModule + llModuleBaseOffset, &MemBasicInfo_t, sizeof(MEMORY_BASIC_INFORMATION))) {
+			wIterations++;
+			continue;
+		}
+		if (MemBasicInfo_t.State == MEM_FREE) {
+			//std::cout << std::format("[!] Found It! (Using: {:d} Iterations) Offset: {:#X} \n[i] Page Base Address: {:#X}\n", wIterations - 1, llModuleBaseOffset, reinterpret_cast<ULONGLONG>(MemBasicInfo_t.BaseAddress));
+			return MemBasicInfo_t.BaseAddress;
+		}
+		wIterations++;
+	}
+	return nullptr;
 }
