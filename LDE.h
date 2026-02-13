@@ -4,20 +4,14 @@
 
 #include "Scanner.h"
 
-#define SIZE_OF_BYTE  1
-#define SIZE_OF_WORD  2
-#define SIZE_OF_DWORD 4
-#define SIZE_OF_QWORD 8
+#define SIZE_OF_BYTE  0x01
+#define SIZE_OF_WORD  0x02
+#define SIZE_OF_DWORD 0x04
+#define SIZE_OF_QWORD 0x08
 
 enum Register: BYTE {
-	ax = 0b000,
-	bx = 0b001,
-	cx = 0b010,
-	dx = 0b011,
-	sp = 0b100,
-	bp = 0b101,
-	si = 0b110,
-	di = 0b111
+	ax, bx, cx, dx,
+	sp, bp, si, di
 };
 
 enum lde_error_codes: BYTE {
@@ -30,18 +24,18 @@ enum lde_error_codes: BYTE {
 };
 
 typedef struct LDE_HOOKING_STATE {
-	LPVOID			lpFuncAddr			     = nullptr;
-	lde_error_codes ecStatus			     = success;
-	BYTE			curr_instruction_ctx     = NULL,
-					cb_count_of_instructions = NULL,
-					cb_count_of_rip_indexes	 = NULL,
-					contexts_arr[TRAMPOLINE_SIZE + 1]{ },
-					rip_relative_indexes[TRAMPOLINE_SIZE + 1]{ };
+	LPVOID			lpFuncAddr;
+	lde_error_codes ecStatus = success;
+	BYTE			curr_instruction_ctx,
+					cb_count_of_instructions,
+					cb_count_of_rip_indexes,
+					contexts_arr[TRAMPOLINE_SIZE],
+					rip_relative_indexes[TRAMPOLINE_SIZE];
 } *LP_LDE_HOOKING_STATE;
 
 class LDE {
 public:
-	BYTE getGreaterFullInstLen(_In_ LPVOID* lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& state);
+	BYTE get_first_valid_instructions_size_hook(_Inout_ LPVOID* lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& state);
 
 	static BOOLEAN find_n_fix_relocation(_Inout_ LPBYTE lpGateWayTrampoline, _In_ LPVOID lpTargetFunction, _In_  LDE_HOOKING_STATE& state);
 
@@ -97,7 +91,7 @@ private:
 
 	static BYTE analyse_group3_mod_rm(_In_ LPBYTE lpCandidate, _Inout_ LDE_HOOKING_STATE& state);
 
-	static BYTE analyse_reg_size_0xF7(_In_ LPBYTE lpCandidate, _In_ const LDE_HOOKING_STATE& state);
+	static BYTE analyse_reg_size_0xF7(_In_ LPBYTE lpCandidate, _In_ LDE_HOOKING_STATE& state);
 
 	static WORD analyse_opcode_type(_In_ LPBYTE  lpCandidate_addr, _Inout_ LDE_HOOKING_STATE& state);
 
@@ -145,22 +139,22 @@ private:
 
 protected:
 	UCHAR results[0x100] = {
-		has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm | prefix,
-		has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
-		has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
-		has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
-		prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix,
-		none, none, none, none, none, none, none, none, none, none, none, none, none, none, none, none,
-		none, none, prefix, has_mod_rm, prefix, prefix, prefix, prefix, imm_four_bytes, has_mod_rm | imm_eight_bytes | imm_four_bytes, imm_one_byte, has_mod_rm | imm_one_byte, none, none, none, none,
-		imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte,
-		has_mod_rm | imm_one_byte, has_mod_rm | imm_four_bytes, has_mod_rm | imm_one_byte, has_mod_rm | imm_one_byte, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
-		none, none, none, none, none, none, none, none, none, none, none, none, none, none, none, none,
-		imm_eight_bytes, imm_eight_bytes, imm_eight_bytes, imm_eight_bytes, none, none, none, none, imm_one_byte, imm_eight_bytes | imm_four_bytes, none, none, none, none, none, none,
-		imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes,
-		has_mod_rm | imm_one_byte, has_mod_rm | imm_one_byte, imm_two_bytes, none, has_mod_rm, has_mod_rm, has_mod_rm | imm_one_byte, has_mod_rm | imm_four_bytes, imm_two_bytes | imm_one_byte, none, imm_two_bytes, none, none, imm_one_byte, none, none,
-		has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
-		imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, none, none, none, none, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, none, imm_one_byte, none, none, none, none,
-		prefix, none, prefix, prefix, none, none, has_mod_rm | special, has_mod_rm | special, none, none, none, none, none, none, has_mod_rm, has_mod_rm
+/*0x00 - 0x0F*/ has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm | prefix,
+/*0x10 - 0x1F*/ has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
+/*0x20 - 0x2F*/ has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
+/*0x30 - 0x3F*/ has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
+/*0x40 - 0x4F*/ prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix, prefix,
+/*0x50 - 0x5F*/ none, none, none, none, none, none, none, none, none, none, none, none, none, none, none, none,
+/*0x60 - 0x6F*/ none, none, prefix, has_mod_rm, prefix, prefix, prefix, prefix, imm_four_bytes, has_mod_rm | imm_eight_bytes | imm_four_bytes, imm_one_byte, has_mod_rm | imm_one_byte, none, none, none, none,
+/*0x70 - 0x7F*/ imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte,
+/*0x80 - 0x8F*/ has_mod_rm | imm_one_byte, has_mod_rm | imm_four_bytes, has_mod_rm | imm_one_byte, has_mod_rm | imm_one_byte, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
+/*0x90 - 0x9F*/ none, none, none, none, none, none, none, none, none, none, none, none, none, none, none, none,
+/*0xA0 - 0xAF*/ imm_eight_bytes, imm_eight_bytes, imm_eight_bytes, imm_eight_bytes, none, none, none, none, imm_one_byte, imm_eight_bytes | imm_four_bytes, none, none, none, none, none, none,
+/*0xB0 - 0xBF*/ imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes,
+/*0xC0 - 0xCF*/ has_mod_rm | imm_one_byte, has_mod_rm | imm_one_byte, imm_two_bytes, none, has_mod_rm, has_mod_rm, has_mod_rm | imm_one_byte, has_mod_rm | imm_four_bytes, imm_two_bytes | imm_one_byte, none, imm_two_bytes, none, none, imm_one_byte, none, none,
+/*0xD0 - 0xDF*/ has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm, has_mod_rm,
+/*0xE0 - 0xEF*/ imm_one_byte, imm_one_byte, imm_one_byte, imm_one_byte, none, none, none, none, imm_eight_bytes | imm_four_bytes, imm_eight_bytes | imm_four_bytes, none, imm_one_byte, none, none, none, none,
+/*0xF0 - 0xFF*/ prefix, none, prefix, prefix, none, none, has_mod_rm | special, has_mod_rm | special, none, none, none, none, none, none, has_mod_rm, has_mod_rm
 	};
 };
 

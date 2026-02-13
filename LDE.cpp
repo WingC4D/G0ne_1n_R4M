@@ -60,22 +60,22 @@ LPBYTE LDE::analyse_last_valid_instruction(_In_ BYTE cbLastValidIndex, _In_ BYTE
 			switch (cbInstructionLength - cbOpcodeLength) {
 				case SIZE_OF_BYTE: {
 					cbRVA += *lpDisposition;
-					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + cbRVA));
+					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + cbRVA));
 					return reinterpret_cast<LPBYTE>(*reinterpret_cast<PULONGLONG>(lpReferenceAddress + cbRVA));
 				}
 				case SIZE_OF_WORD: {
 					wRVA += *reinterpret_cast<PWORD>(lpDisposition);
-					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + wRVA));
+					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + wRVA));
 					return reinterpret_cast<LPBYTE>(*reinterpret_cast<PULONGLONG>(lpReferenceAddress + wRVA));
 				}
 				case SIZE_OF_DWORD: {
 					dwRVA += *reinterpret_cast<PDWORD>(lpDisposition);
-					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + dwRVA));
+					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + dwRVA));
 					return reinterpret_cast<LPBYTE>(*reinterpret_cast<PULONGLONG>(lpReferenceAddress + dwRVA));
 				}
 				case SIZE_OF_QWORD: {
 					ullRVA += *reinterpret_cast<PULONGLONG>(lpDisposition);
-					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + ullRVA));
+					std::cout << std::format("[i] Moving RIP from: {:#12x} to: {:#12x}\n", reinterpret_cast<ULONGLONG>(lpReferenceAddress), *reinterpret_cast<PULONGLONG>(lpReferenceAddress + ullRVA));
 					return reinterpret_cast<LPBYTE>(*reinterpret_cast<PULONGLONG>(lpReferenceAddress + ullRVA));
 				}
 				default: {
@@ -121,7 +121,7 @@ void LDE::log_2(BYTE cbInstructionCounter, _In_ LDE_HOOKING_STATE& lde_state) {
 	std::cout << "\n";
 }
 
-BYTE LDE::getGreaterFullInstLen(_In_ LPVOID *lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& state) {
+BYTE LDE::get_first_valid_instructions_size_hook(_Inout_ LPVOID *lpCodeBuffer, _Inout_ LDE_HOOKING_STATE& state) {
 	if (!lpCodeBuffer) {
 		state.ecStatus = no_input;
 		return NULL;
@@ -241,7 +241,6 @@ void LDE::set_curr_inst_len(_In_ BYTE cbInstructionLength, _Inout_ LDE_HOOKING_S
 }
 
 void LDE::set_curr_opcode_len(_In_ BYTE cbOpcodeLength, _Inout_ LDE_HOOKING_STATE& lde_state) {
-	
 	if (cbOpcodeLength < SIZE_OF_DWORD) {
 		lde_state.curr_instruction_ctx &= 0xFC;
 		lde_state.curr_instruction_ctx |= cbOpcodeLength - 1;
@@ -260,9 +259,9 @@ BYTE LDE::get_instruction_length(_In_ LPVOID lpCodeBuffer, _Inout_ LDE_HOOKING_S
 		std::cout << std::format("[!] Found Uninitialised memory @: {:#10X} Now Examining The Last instruction...\n", reinterpret_cast<DWORD64>(lpCodeBuffer));
 		return NULL;
 	}
+	state.ecStatus = success;
 	LPBYTE lpReferenceBuffer = static_cast<LPBYTE>(lpCodeBuffer);
 	increment_inst_len(state);
-	state.ecStatus = success;
 	switch (results[*lpReferenceBuffer]) {
 		case none: {
 			if (*lpReferenceBuffer == 0xC3 ||
@@ -384,6 +383,7 @@ BYTE LDE::analyse_group3_mod_rm(_In_ LPBYTE lpCandidate, _Inout_ LDE_HOOKING_STA
 		state.ecStatus = no_input;
 		return NULL;
 	}
+	state.ecStatus = success;
 	BYTE ucReg				 = *(lpCandidate + SIZE_OF_BYTE) & 0x38,
 		 ucRM				 = *(lpCandidate + SIZE_OF_BYTE) & 0x07,
 		 ucMod				 = *(lpCandidate + SIZE_OF_BYTE) & 0xC0,
@@ -488,7 +488,12 @@ BYTE LDE::analyse_group3_mod_rm(_In_ LPBYTE lpCandidate, _Inout_ LDE_HOOKING_STA
 	return uc_added_opcode_len + uc_added_imm_len;
 }
 
-BYTE LDE::analyse_reg_size_0xF7(_In_ const LPBYTE lpCandidate, _In_ const LDE_HOOKING_STATE& state) {
+BYTE LDE::analyse_reg_size_0xF7(_In_ const LPBYTE lpCandidate, _In_ LDE_HOOKING_STATE& state) {
+	if (!lpCandidate) {
+		state.ecStatus = no_input;
+		return NULL;
+	}
+	state.ecStatus = success;
 	switch (get_curr_opcode_len(state.curr_instruction_ctx)) {
 		case 2: {
 			if (*(lpCandidate - SIZE_OF_BYTE) != 0x66) {

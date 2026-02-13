@@ -6,7 +6,7 @@ HookManager::ecManager HookManager::initializeLocally(_In_ HANDLE hTargetThread)
 	if (hProcess != INVALID_HANDLE_VALUE) {
 		return targetIsNotLocal;
 	}
-	if (!pScanner->isThreadInProcess(hTargetThread)) {
+	if (!scanner.isThreadInProcess(hTargetThread)) {
 		return threadIsNotInProcess;
 	}
 	hThread = hTargetThread;
@@ -14,75 +14,48 @@ HookManager::ecManager HookManager::initializeLocally(_In_ HANDLE hTargetThread)
 }
 
 HookManager::ecManager HookManager::attachToThread(HANDLE hThread) { //Place Holder
-	if (!pScanner) {
-		return success;
-	}
-	return failedToGetProcessHeap;
+	return notBuiltYet;
 }
 
-HookManager::ecManager HookManager::CreateLocalHook(_In_  LP_HOOK_CONTEXT pCandidateHookData_t, _Out_ LPWORD lpHookID) {
-	if (!pCandidateHookData_t || !lpHookID) {
+HookManager::ecManager HookManager::CreateLocalHook(_In_ HOOK_CONTEXT& candidate_hook_ctx, _Out_ LPWORD lpHookID) {
+	if (!lpHookID || !candidate_hook_ctx.lpOrgFuncAddr || !candidate_hook_ctx.lpDetourFunc || !candidate_hook_ctx.lpTargetFunc) {
 		return noInput;
 	}
-	if (!pCandidateHookData_t->lpOrgFuncAddr || !pCandidateHookData_t->lpDetourFunc || !pCandidateHookData_t->lpTargetFunc) {
-		return noInput;
-	}
-	LDE_HOOKING_STATE lde_state	  = { };
-	BYTE			  ucSafeLength = lde_.getGreaterFullInstLen(&pCandidateHookData_t->lpTargetFunc, lde_state);
-	if (!ucSafeLength) {
+	LDE_HOOKING_STATE lde_state	   = { };
+	candidate_hook_ctx.cbHookLength  = lde.get_first_valid_instructions_size_hook(&candidate_hook_ctx.lpTargetFunc, lde_state);
+	if (!candidate_hook_ctx.cbHookLength) {
 		return failedToCalculateHookSize;
 	}
-	MEMORY_BASIC_INFORMATION MemBasicInfo_t			  = { };
-	LPVOID					 lpTrampoline_target_addr = nullptr;
-	LPBYTE					 lpTrampoline			  = nullptr,
-							 lpNop					  = nullptr;
-	LONGLONG				 llIterations			  = 1; //the last byte of the dll's size is allocated for the dll, let's start looking on the next page
-	DWORD					 dwOldProtections		  = NULL;
-	pScanner->getLocalModuleHandleByFunction(pCandidateHookData_t->lpTargetFunc);//used to indirectly map the correct module's data, this will be handled in a separate method later.
-	while (llIterations < MAX_ITERATIONS) {
-		DWORD64 llModuleBaseOffset = pScanner->pModuleData->ullImageSize + llIterations * PAGE_SIZE;
-		VirtualQuery(static_cast<LPBYTE>(pScanner->pModuleData->pModuleLDR->Reserved2[0]) + llModuleBaseOffset , &MemBasicInfo_t, sizeof(MEMORY_BASIC_INFORMATION));
-		if (MemBasicInfo_t.State == MEM_FREE) {
-			std::cout << std::format("[!] Found It! (Using: {:d} Iterations) Offset: {:#X} \n[i] Page Base Address: {:#X}\n",llIterations - 1, llModuleBaseOffset, reinterpret_cast<ULONGLONG>(MemBasicInfo_t.BaseAddress));
-			lpTrampoline_target_addr = MemBasicInfo_t.BaseAddress;
-			break;
+	LPBYTE lpGateway = static_cast<LPBYTE>(generate_gateway_buffer(candidate_hook_ctx));
+	if (!lpGateway) {
+		return failedToAllocateMemory;
+	}
+	LDE::find_n_fix_relocation(lpGateway, candidate_hook_ctx.lpTargetFunc, lde_state);
+	*candidate_hook_ctx.lpOrgFuncAddr				  = lpGateway;
+ 	BYTE ucHook_arr[TRAMPOLINE_SIZE]				  = { 0x49, 0xBA, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0x41, 0xFF, 0xE2 },
+		 ucTrampoline_arr[TRAMPOLINE_SIZE]			  = { 0x49, 0xBA, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0x41, 0xFF, 0xE2 },
+		 cbDelta									  = candidate_hook_ctx.cbHookLength - TRAMPOLINE_SIZE,
+		*lpReference								  = static_cast<LPBYTE>(candidate_hook_ctx.lpTargetFunc) + candidate_hook_ctx.cbHookLength;
+	* reinterpret_cast<LPVOID*>(&ucHook_arr[2])		  = candidate_hook_ctx.lpDetourFunc;
+	* reinterpret_cast<LPVOID*>(&ucTrampoline_arr[2]) = lpReference;
+	memcpy(&lpGateway[candidate_hook_ctx.cbHookLength], &ucTrampoline_arr, candidate_hook_ctx.cbHookLength);
+	if (cbDelta) {
+		LPBYTE lpNop = generate_nop(cbDelta);
+		if (!lpNop) {
+			ecStatus = failedToAllocateMemory;
+			return ecStatus;
 		}
-		llIterations++;
+		memcpy(&candidate_hook_ctx.patched_bytes_arr, lpNop, cbDelta);
+		HeapFree(GetProcessHeap(), NULL, lpNop);
 	}
-	if(!(lpTrampoline = static_cast<LPBYTE>(VirtualAlloc(lpTrampoline_target_addr, ucSafeLength + TRAMPOLINE_SIZE, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE)))) {
-		ecStatus = failedToAllocateMemory;
-		return failedToAllocateMemory;
-	}
-	memcpy(&pCandidateHookData_t->org_bytes_arr, pCandidateHookData_t->lpTargetFunc, ucSafeLength);
-	memcpy(lpTrampoline, &pCandidateHookData_t->org_bytes_arr, ucSafeLength);
-	LDE::find_n_fix_relocation(lpTrampoline, pCandidateHookData_t->lpTargetFunc, lde_state);
-	*pCandidateHookData_t->lpOrgFuncAddr = lpTrampoline;
-
- 	BYTE   ucHook_arr	   [TRAMPOLINE_SIZE]{ 0x49, 0xBA, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0x41, 0xFF, 0xE2 },
-		   ucTrampoline_arr[TRAMPOLINE_SIZE]{ 0x49, 0xBA, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0x41, 0xFF, 0xE2 },
-		   cbDelta	   = ucSafeLength - TRAMPOLINE_SIZE,
-		  *lpReference = static_cast<LPBYTE>(pCandidateHookData_t->lpTargetFunc) + ucSafeLength;
-
-	memcpy(&ucHook_arr[2], &pCandidateHookData_t->lpDetourFunc, sizeof(LPVOID));
-	memcpy(&ucTrampoline_arr[2], &lpReference , sizeof(LPVOID));
-	memcpy(&lpTrampoline[ucSafeLength], &ucTrampoline_arr, ucSafeLength);
-
-	if (!(lpNop = generate_nop(cbDelta))) {
-		ecStatus = failedToAllocateMemory;
-		return failedToAllocateMemory;
-	}
-
-	memcpy(&pCandidateHookData_t->patched_bytes_arr, lpNop, cbDelta);
-	memcpy(&pCandidateHookData_t->patched_bytes_arr[cbDelta], &ucHook_arr, TRAMPOLINE_SIZE);
-	*pCandidateHookData_t->lpOrgFuncAddr = *reinterpret_cast<LPVOID *>(&lpTrampoline);
-	pCandidateHookData_t->cbHookLength	 = ucSafeLength;
-	VirtualProtect(*pCandidateHookData_t->lpOrgFuncAddr, ucSafeLength + TRAMPOLINE_SIZE, PAGE_EXECUTE_READ, &dwOldProtections);
-	hkContexts.push_back(*pCandidateHookData_t);
+	memcpy(&candidate_hook_ctx.patched_bytes_arr[cbDelta], &ucHook_arr, TRAMPOLINE_SIZE);
+	DWORD  dwOldProtections	= NULL;
+	VirtualProtect(*candidate_hook_ctx.lpOrgFuncAddr, candidate_hook_ctx.cbHookLength + TRAMPOLINE_SIZE, PAGE_EXECUTE_READ, &dwOldProtections);
+	hkContexts.push_back(candidate_hook_ctx);
 	*lpHookID = wNumberOfHooks;
 	wNumberOfHooks++;
 	return success;
 }
-
 
 HookManager::ecManager HookManager::install_hook(_In_ WORD wHookID) {
 	DWORD dwOldProtections  = NULL,
@@ -108,42 +81,33 @@ LPBYTE HookManager::generate_nop(_In_ BYTE cbDeltaSize) {
 	if (!cbDeltaSize) {
 		return nullptr;
 	}
-	LPBYTE lpNOP = static_cast<LPBYTE>(HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, cbDeltaSize));
+	LPVOID lpNOP = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, cbDeltaSize);
 	if (!lpNOP) {
 		return nullptr;
 	}
 	switch (cbDeltaSize) {
 		case 1:
-			lpNOP[0] = 0x90;
+			*static_cast<LPBYTE>(lpNOP)  = 0x90;
 			break;
 		case 2:
-			lpNOP[0] = 0x66;
-			lpNOP[1] = 0x90;
+			*static_cast<LPWORD>(lpNOP)  = 0x9066;
 			break;
 		case 3:
-			lpNOP[0] = 0x0F;
-			lpNOP[1] = 0x1F;
+			*static_cast<LPDWORD>(lpNOP) = 0x1F0F;
 			break;
 		case 4:
-			lpNOP[0] = 0x0F;
-			lpNOP[1] = 0x1F;
-			lpNOP[2] = 0x40;
+			*static_cast<LPDWORD>(lpNOP) = 0x401F0F;
 			break;
 		case 5:
-			lpNOP[0] = 0x0F;
-			lpNOP[1] = 0x1F;
-			lpNOP[2] = 0x44;
+			*static_cast<LPDWORD>(lpNOP) = 0x441F0F;
 			break;
 		case 6:
-			lpNOP[0] = 0x66;
-			lpNOP[1] = 0x0F;
-			lpNOP[2] = 0x1F;
-			lpNOP[3] = 0x44;
+			*static_cast<LPDWORD>(lpNOP) = 0x66441F0F;
 			break;
 		default:
-			break;
+			return nullptr;
 	}
-	return lpNOP;
+	return static_cast<LPBYTE>(lpNOP);
 }
 
 HookManager::ecManager  HookManager::uninstall_hook(_In_ WORD wHookID) {
@@ -158,10 +122,27 @@ HookManager::ecManager  HookManager::uninstall_hook(_In_ WORD wHookID) {
 	if (!VirtualProtect(hkContexts[wHookID].lpTargetFunc, hkContexts[wHookID].cbHookLength, dwOldProtections2, &dwOldProtections)) {
 		return failedToAllocateMemory;
 	}
-	memcpy(hkContexts[wHookID].lpTargetFunc, &hkContexts[wHookID].org_bytes_arr, hkContexts[wHookID].cbHookLength);\
+	memcpy(hkContexts[wHookID].lpTargetFunc, &hkContexts[wHookID].org_bytes_arr, hkContexts[wHookID].cbHookLength);
 	if (!VirtualProtect(hkContexts[wHookID].lpTargetFunc, hkContexts[wHookID].cbHookLength, dwOldProtections, &dwOldProtections2)) {
 		return failedToAllocateMemory;
 	}
 	hkContexts[wHookID].bActive = FALSE;
 	return success;
+}
+
+LPVOID HookManager::generate_gateway_buffer(HOOK_CONTEXT& candidate_hook_ctx) {
+	
+	LPVOID lpFoundAddress = scanner.get_adjacent_memory_i32bit(scanner.get_local_module_handle_by_function(candidate_hook_ctx.lpTargetFunc));
+	if (!lpFoundAddress) {
+		ecStatus = failedToAllocateMemory;
+		return nullptr;
+	}
+	LPBYTE lpGateway = static_cast<LPBYTE>(VirtualAlloc(lpFoundAddress, candidate_hook_ctx.cbHookLength, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE));
+	if (!lpGateway) {
+		ecStatus = failedToAllocateMemory;
+		return nullptr;
+	}
+	memcpy(&candidate_hook_ctx.org_bytes_arr, candidate_hook_ctx.lpTargetFunc, candidate_hook_ctx.cbHookLength);
+	memcpy(lpGateway, &candidate_hook_ctx.org_bytes_arr, candidate_hook_ctx.cbHookLength);
+	return lpGateway;
 }

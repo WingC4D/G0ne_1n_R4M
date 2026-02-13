@@ -1,22 +1,27 @@
 ﻿#pragma once
 #include <iostream>
 #include <vector>
-#include <memory>
 #include <Windows.h>
 #include <winternl.h>
-#ifndef HUINT
+#ifndef hUINT
 #define LOCAL_PROCESS_HANDLE reinterpret_cast<HANDLE>(-1)
 #define LOCAL_THREAD_HANDLE  reinterpret_cast<HANDLE>(-2)
 
-	#ifdef _M_IX86
-	typedef unsigned long	   hkUINT
-	#define HKUINT
-	#define TRAMPOLINE_SIZE 0x05
-	#elifdef _M_X64
+#ifdef _M_IX86
+	typedef unsigned long	   hUINT
+	#define hkUINT
+	#define MAX_ITERATIONS 0x8000
+	#define PAGE_SIZE	   0x10000
+	#define TRAMPOLINE_SIZE 0x07
+	#define MAX_INSTRUCTION_SIZE 0x0F
+#elifdef _M_X64
+	#define hUINT
+	#define MAX_ITERATIONS 0x8000
+	#define PAGE_SIZE	   0x10000
 	typedef unsigned long long hkUINT;
-	#define HKUINT
 	#define TRAMPOLINE_SIZE 0x0D
-	#endif
+	#define MAX_INSTRUCTION_SIZE 0x0F
+#endif
 #endif
 #ifdef  __cplusplus
 namespace ct {
@@ -33,10 +38,11 @@ namespace ct {
 	constexpr auto g_Seed = GenerateSeed();
 
 	constexpr hkUINT ctGenerateHashW(_In_ LPCWSTR lpStringToHash) {
-		WORD   wChar;
+		WORD  wChar;
 		hkUINT uiHash = NULL,
-			   uiSeed = g_Seed;
-		while ((wChar = *lpStringToHash++) != NULL) {
+			uiSeed = g_Seed;
+		while ((wChar = *lpStringToHash++) != NULL)
+		{
 			uiHash += wChar;
 			uiHash += uiHash << (uiSeed & 0x3F);
 			uiHash ^= uiHash >> 6;
@@ -57,18 +63,17 @@ namespace ct {
 			uiHash += uiHash << (uiSeed & 0x3F);
 			uiHash ^= uiHash >> 6;
 		}
-
 		uiHash += uiHash << 3;
 		uiHash ^= uiHash >> 11;
 		uiHash += uiHash << 15;
-
 		return uiHash;
 	};
+
 	constexpr hkUINT nt_dll			    = ctGenerateHashW(L"ntdll.dll");
 	constexpr hkUINT nt_query_info_proc = ctGenerateHashA("NtQueryInformationProcess");
 	constexpr hkUINT nt_query_sys_info  = ctGenerateHashA("NtQuerySystemInformation");
 }
-typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation)(
+typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation) (
 	SYSTEM_INFORMATION_CLASS SystemInformationClass,
 	PVOID                    SystemInformation,
 	ULONG                    SystemInformationLength,
@@ -76,13 +81,12 @@ typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation)(
 );
 
 typedef NTSTATUS(WINAPI* fnNtQueryInformationProcess) (
-	_In_	  HANDLE           hProcessHandle,
-	_In_	  PROCESSINFOCLASS process_information_class_t,
-	_Out_	  PVOID			   pProcessInformation,
-	_In_      ULONG			   ulProcessInfoLength,
-	_Out_opt_ PULONG		   pulReturnLength
+	IN              HANDLE           hProcessHandle,
+	IN              PROCESSINFOCLASS process_information_class_t,
+	   OUT          PVOID            pProcessInformation,
+	IN              ULONG            ulProcessInfoLength,
+	OUT OPTIONAL    PULONG           pulReturnLength
 );
-#endif
 
 typedef struct MODULE_DATA {
 	LPBYTE				  lpModuleBaseAddr;
@@ -90,14 +94,15 @@ typedef struct MODULE_DATA {
 						  lpNamesRVA_arr;
 	LPWORD				  lpOrdsRVA_arr;
 	PLDR_DATA_TABLE_ENTRY pModuleLDR;
+	DWORD				  ullImageSize;
 	DWORD				  dwNumberOfNames,
 						  dwNumberOfFunctions;
-	DWORD64				  ullImageSize;
 }*MODULE_DATA_PTR;
+#endif
 
 typedef class Scanner {
 public:
-	enum scannerErrorCode: UCHAR {
+	enum scannerErrorCode : UCHAR {
 		success,
 		noInput,
 		badProcessHandle,
@@ -122,45 +127,47 @@ public:
 		notBuiltYet
 
 	};
-	std::unique_ptr<MODULE_DATA> pModuleData;
-	PPEB	pTargetPEB;
-	HANDLE	hProcess,
-			hThread,
-			hHeap;
-	DWORD	dwTargetPID,
-			dwTargetTID;
-	std::vector<BYTE>pSystemProcInfo;
-
-	Scanner(_In_ HANDLE hTargetProcess);
-
-	HMODULE getLocalModuleHandleByFunction(LPVOID lpFunctionAddress);
-
-	scannerErrorCode getLastError(_In_ void) const;
-
-	BOOLEAN isThreadInProcess(_In_ HANDLE hCandidateThread);
-
-	scannerErrorCode mapModuleData(PLDR_DATA_TABLE_ENTRY lpModuleLDR);
-
 private:
-	DWORD				  dwFuncSize;
-	WORD				  wTargetOrdinal;
-	BOOLEAN				  bIsLocal;
-	scannerErrorCode	  ecStatus;
+	WORD				  wTargetOrdinal = NULL;
+	BOOLEAN				  bIsLocal = FALSE;
+	scannerErrorCode	  ecStatus = success;
+	std::vector<BYTE>	  pSystemProcInfo;
 
 	HMODULE getModuleHandleH(_In_ hkUINT uiHashedModuleName);
 
-	WORD getFuncOrdinal(_In_ LPVOID lpFunction);
+	WORD getFuncOrdinal(_In_ LPVOID  lpFunction);
 
-	FARPROC getProcAddressH(_In_ HMODULE hModule, _In_ hkUINT uiHashedName);
+	FARPROC getProcAddressH(_In_ HMODULE hModule, _In_ hkUINT  uiHashedName);
 
 	PPEB getLocalPeb(_In_ void);
 
 	BOOLEAN validateLocalPEB(_In_ void);
 
-	PIMAGE_OPTIONAL_HEADER get_image_optional_headers(_In_ LPBYTE pImageBase);
+	PIMAGE_OPTIONAL_HEADER get_image_optional_headers(LPBYTE pImageBase);
 
-	PIMAGE_EXPORT_DIRECTORY getImageExportDirectory(_In_ LPBYTE pImageBase);
+	PIMAGE_EXPORT_DIRECTORY getImageExportDirectory(LPBYTE pImageBase);
 
-	BOOLEAN isThreadLocal(_In_ HANDLE hThread);
+	BOOLEAN isThreadLocal(HANDLE hThread);
+
+public:	
+	std::unique_ptr<MODULE_DATA> pModuleData = std::unique_ptr<MODULE_DATA>();
+	HANDLE hHeap = GetProcessHeap(),
+		   hProcess = INVALID_HANDLE_VALUE,
+		   hThread;
+	PPEB   pTargetPEB = getLocalPeb();
+	DWORD  dwTargetPID  = GetCurrentProcessId(),
+		   dwTargetTID;
+
+	LPVOID get_adjacent_memory_i32bit(HMODULE hModule) const;
+
+	HMODULE get_local_module_handle_by_function(_In_ LPVOID lpFunctionAddress);
+
+	scannerErrorCode getLastError() const;
+
+	BOOLEAN isThreadInProcess(_In_ HANDLE hCandidateThread);
+
+	scannerErrorCode mapModuleData(_In_ PLDR_DATA_TABLE_ENTRY lpModuleLDR);
+
+
 } *PScanner;
 
