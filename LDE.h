@@ -20,6 +20,7 @@ enum lde_error_codes: BYTE {
 	wrong_input,
 	reached_end_of_function,
 	opcode_overflow,
+	prefix_overflow,
 	instruction_overflow
 };
 

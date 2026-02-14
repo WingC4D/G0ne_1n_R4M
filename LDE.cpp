@@ -144,7 +144,7 @@ BYTE LDE::get_first_valid_instructions_size_hook(_Inout_ LPVOID *lpCodeBuffer, _
 	state.lpFuncAddr = *lpCodeBuffer;
 	BYTE  cbAccumulatedLength  = NULL,
 		 *lpReferenceBuffer	= static_cast<LPBYTE>(*lpCodeBuffer);
-	while (cbAccumulatedLength < TRAMPOLINE_SIZE && state.ecStatus == success && get_current_prefix_count(state) < 0x0E) {
+	while (cbAccumulatedLength < TRAMPOLINE_SIZE && state.ecStatus == success) {
 		if (*lpReferenceBuffer == 0xC3) {
 			state.ecStatus = reached_end_of_function;
 			break;
@@ -178,7 +178,7 @@ BYTE LDE::get_first_valid_instructions_size_hook(_Inout_ LPVOID *lpCodeBuffer, _
 		cbAccumulatedLength += cbCurrentInstructionLength;
 		lpReferenceBuffer += cbCurrentInstructionLength;
 	}
-	log_1(lpReferenceBuffer, state);	
+	//log_1(lpReferenceBuffer, state);	
 	//log_2(cbInstructionCounter);
 	if (state.ecStatus != success && state.ecStatus != reached_end_of_function) {
 		return NULL;
@@ -285,6 +285,10 @@ BYTE LDE::get_instruction_length(_In_ LPVOID lpCodeBuffer, _Inout_ LDE_HOOKING_S
 	}
 	if (*static_cast<LPBYTE>(lpCodeBuffer) == 0xCC) {
 		std::cout << std::format("[!] Found Uninitialised memory @: {:#10X} Now Examining The Last instruction...\n", reinterpret_cast<DWORD64>(lpCodeBuffer));
+		return NULL;
+	}
+	if (get_current_prefix_count(state) > 0x0E) {
+		state.ecStatus = prefix_overflow;
 		return NULL;
 	}
 	state.ecStatus = success;
