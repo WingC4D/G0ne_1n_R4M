@@ -42,7 +42,7 @@ A lightweight, stateless x64 instruction length decoder.
 An inline hooking engine designed for stability and concurrency.
 
 - **Trampoline Generation:** detailed analysis of target function preludes to generate safe, non-destructive trampolines.
-- **Memory Management:** * Utilizes a custom scanner to identify code caves (executable memory gaps) adjacent to target modules (within +/- 2GB) to allow for 5-byte relative jumps (`JMP Rel32`) instead of requiring 14-byte absolute jumps.
+- **Memory Management:** Utilizes a custom scanner to identify code caves (executable memory gaps) adjacent to target modules (within +/- 2GB) to allow for 5-byte relative jumps (`JMP Rel32`) instead of requiring 14-byte absolute jumps.
 - **Deque-Based Storage:** Implements `std::deque` for hook context storage to prevent iterator invalidation and pointer corruption during runtime vector resizing (the "Split-Brain" problem).
 - **Atomic Operations:** Ensures hooks can be installed and uninstalled cleanly without race conditions.
 
@@ -57,7 +57,7 @@ A custom PE parser and memory walker that avoids standard WinAPI calls (`GetProc
 ## Technical Highlights
 
 - **Zero External Dependencies:** Built using only standard C++ and Windows headers.
-- **Stateless LDE:** The LDE context is stack-allocated per call, ensuring thread safety for concurrent hook installation.
+- **Stateless LDE:** The LDE context is stack-allocated per call, ensuring thread safety for concurrent hook creation.
 - **Correctness:** Handles edge cases such as finding memory regions within the 32-bit relative displacement limit of the target function.
 
 ## Usage
