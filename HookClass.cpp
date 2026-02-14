@@ -38,7 +38,7 @@ HookManager::ecManager HookManager::CreateLocalHook(_In_ HOOK_CONTEXT& candidate
 		*lpReference								  = static_cast<LPBYTE>(candidate_hook_ctx.lpTargetFunc) + candidate_hook_ctx.cbHookLength;
 	* reinterpret_cast<LPVOID*>(&ucHook_arr[2])		  = candidate_hook_ctx.lpDetourFunc;
 	* reinterpret_cast<LPVOID*>(&ucTrampoline_arr[2]) = lpReference;
-	memcpy(&lpGateway[candidate_hook_ctx.cbHookLength], &ucTrampoline_arr, candidate_hook_ctx.cbHookLength);
+	memcpy(&lpGateway[candidate_hook_ctx.cbHookLength], &ucTrampoline_arr, TRAMPOLINE_SIZE);
 	if (cbDelta) {
 		generate_nop(cbDelta, candidate_hook_ctx.patched_bytes_arr);
 		if (!candidate_hook_ctx.patched_bytes_arr[0]) {
