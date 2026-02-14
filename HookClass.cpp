@@ -31,7 +31,6 @@ HookManager::ecManager HookManager::CreateLocalHook(_In_ HOOK_CONTEXT& candidate
 		return failedToAllocateMemory;
 	}
 	LDE::find_n_fix_relocation(lpGateway, candidate_hook_ctx.lpTargetFunc, lde_state);
-	*candidate_hook_ctx.lpOrgFuncAddr				  = lpGateway;
  	BYTE ucHook_arr[TRAMPOLINE_SIZE]				  = { 0x49, 0xBA, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0x41, 0xFF, 0xE2 },
 		 ucTrampoline_arr[TRAMPOLINE_SIZE]			  = { 0x49, 0xBA, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0x41, 0xFF, 0xE2 },
 		 cbDelta									  = candidate_hook_ctx.cbHookLength - TRAMPOLINE_SIZE,
@@ -47,12 +46,15 @@ HookManager::ecManager HookManager::CreateLocalHook(_In_ HOOK_CONTEXT& candidate
 		}
 	}
 	memcpy(&candidate_hook_ctx.patched_bytes_arr[cbDelta], &ucHook_arr, TRAMPOLINE_SIZE);
-	DWORD  dwOldProtections	= NULL;
-	VirtualProtect(*candidate_hook_ctx.lpOrgFuncAddr, candidate_hook_ctx.cbHookLength + TRAMPOLINE_SIZE, PAGE_EXECUTE_READ, &dwOldProtections);
-	hkContexts.push_back(candidate_hook_ctx);
-	*lpHookID = wNumberOfHooks;
-	wNumberOfHooks++;
-	return success;
+	DWORD  dwOldProtections			  = NULL;
+	if (VirtualProtect(lpGateway, candidate_hook_ctx.cbHookLength + TRAMPOLINE_SIZE, PAGE_EXECUTE_READ, &dwOldProtections)) {
+		*candidate_hook_ctx.lpOrgFuncAddr = lpGateway;
+		*lpHookID = wNumberOfHooks;
+		hkContexts.push_back(candidate_hook_ctx);
+		wNumberOfHooks++;
+		return success;
+	}
+	return failedToAllocateMemory;
 }
 
 HookManager::ecManager HookManager::install_hook(_In_ WORD wHookID) {
