@@ -1,6 +1,6 @@
 # G0ne_1n_R4M
 
-A Custom, Dependency-Free Dynamic Instrumentation and Hooking Framework for Windows x64.
+A Custom, Dependency-Free Dynamic Hooking Framework for Windows x64.
 
 ## Used Technologies
 
