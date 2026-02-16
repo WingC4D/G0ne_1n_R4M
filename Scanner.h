@@ -1,28 +1,34 @@
 ﻿#pragma once
 #include <iostream>
+#include <format>
 #include <vector>
 #include <Windows.h>
 #include <winternl.h>
 #ifndef hUINT
-#define LOCAL_PROCESS_HANDLE reinterpret_cast<HANDLE>(-1)
-#define LOCAL_THREAD_HANDLE  reinterpret_cast<HANDLE>(-2)
+	#define LOCAL_PROCESS_HANDLE reinterpret_cast<HANDLE>(-1)
+	#define LOCAL_THREAD_HANDLE  reinterpret_cast<HANDLE>(-2)
 
-#ifdef _M_IX86
-	typedef unsigned long	   hUINT
-	#define hkUINT
-	#define MAX_ITERATIONS 0x8000
-	#define PAGE_SIZE	   0x10000
-	#define TRAMPOLINE_SIZE 0x07
-	#define MAX_INSTRUCTION_SIZE 0x0F
-#elifdef _M_X64
-	#define hUINT
-	#define MAX_ITERATIONS 0x8000
-	#define PAGE_SIZE	   0x10000
-	typedef unsigned long long hkUINT;
-	#define TRAMPOLINE_SIZE 0x0D
-	#define MAX_INSTRUCTION_SIZE 0x0F
+	#ifdef _M_X64
+		#define hUINT
+		
+		typedef unsigned long long hkUINT;
+
+		constexpr hkUINT PAGE_SIZE		 = 0x10000,
+						 MAX_ITERATIONS  = 0x8000;
+		constexpr BYTE   TRAMPOLINE_SIZE = 0x0D;
+		#define MAX_INSTRUCTION_SIZE 0x0F
+	#else
+		#ifdef _M_IX86 
+			typedef unsigned long	   hkUINT
+			#define hkUINT
+			#define MAX_ITERATIONS 0x8000
+			#define PAGE_SIZE	   0x10000
+			#define TRAMPOLINE_SIZE 0x07
+			#define MAX_INSTRUCTION_SIZE 0x0F
+		#endif
+	#endif
 #endif
-#endif
+
 #ifdef  __cplusplus
 namespace ct {
 	constexpr hkUINT GenerateSeed() {
@@ -38,9 +44,9 @@ namespace ct {
 	constexpr auto g_Seed = GenerateSeed();
 
 	constexpr hkUINT ctGenerateHashW(_In_ LPCWSTR lpStringToHash) {
-		WORD  wChar;
-		hkUINT uiHash = NULL,
-			uiSeed = g_Seed;
+		WORD   wChar = NULL;
+		hkUINT uiHash = NULL;
+		hkUINT uiSeed = g_Seed;
 		while ((wChar = *lpStringToHash++) != NULL)
 		{
 			uiHash += wChar;
@@ -55,9 +61,9 @@ namespace ct {
 		return uiHash;
 	};
 	constexpr hkUINT ctGenerateHashA(_In_ LPCSTR lpStringToHash) {
-		CHAR   cChar;
-		hkUINT uiHash = NULL,
-			   uiSeed = g_Seed;
+		CHAR   cChar = NULL;
+		hkUINT uiHash = NULL;
+		hkUINT uiSeed = g_Seed;
 		while ((cChar = *lpStringToHash++) != NULL) {
 			uiHash += cChar;
 			uiHash += uiHash << (uiSeed & 0x3F);
@@ -139,17 +145,18 @@ private:
 
 	FARPROC getProcAddressH(_In_ HMODULE hModule, _In_ hkUINT  uiHashedName);
 
+
+	PIMAGE_EXPORT_DIRECTORY getImageExportDirectory(LPBYTE pImageBase);
+
+	BOOLEAN isThreadLocal(HANDLE hThread);
+
+public:
 	PPEB getLocalPeb(_In_ void);
 
 	BOOLEAN validateLocalPEB(_In_ void);
 
 	PIMAGE_OPTIONAL_HEADER get_image_optional_headers(LPBYTE pImageBase);
 
-	PIMAGE_EXPORT_DIRECTORY getImageExportDirectory(LPBYTE pImageBase);
-
-	BOOLEAN isThreadLocal(HANDLE hThread);
-
-public:	
 	std::unique_ptr<MODULE_DATA> pModuleData = std::unique_ptr<MODULE_DATA>();
 	HANDLE hHeap = GetProcessHeap(),
 		   hProcess = INVALID_HANDLE_VALUE,
@@ -158,7 +165,9 @@ public:
 	DWORD  dwTargetPID  = GetCurrentProcessId(),
 		   dwTargetTID;
 
-	LPVOID get_adjacent_memory_i32bit(HMODULE hModule) const;
+	static LPVOID get_adjacent_memory_forward_i32bit(HMODULE hModule, DWORD dwModuleSize);
+
+	static LPVOID get_adjacent_memory_backward_i32bit(HMODULE hModule);
 
 	HMODULE get_local_module_handle_by_function(_In_ LPVOID lpFunctionAddress);
 

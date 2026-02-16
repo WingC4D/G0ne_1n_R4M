@@ -4,10 +4,10 @@
 
 #include "Scanner.h"
 
-#define SIZE_OF_BYTE  0x01
-#define SIZE_OF_WORD  0x02
-#define SIZE_OF_DWORD 0x04
-#define SIZE_OF_QWORD 0x08
+constexpr BYTE SIZE_OF_BYTE  = 0x01,
+			   SIZE_OF_WORD  = 0x02,
+			   SIZE_OF_DWORD = 0x04,
+			   SIZE_OF_QWORD = 0x08;
 
 enum Register: BYTE {
 	ax, bx, cx, dx,

@@ -6,6 +6,7 @@
 #include <winternl.h>
 #include "Scanner.h"
 #include "LDE.h"
+#include "hooks_memory_manager.h"
 
 
 #ifndef hUINT
@@ -17,22 +18,24 @@
 #ifdef _M_IX86
 typedef unsigned long	   hUINT
 #define hkUINT
-#define TRAMPOLINE_SIZE 0x07
+#define TRAMPOLINE_SIZE 0x100
 #elifdef _M_X64
 typedef unsigned long long hUINT;
 #define hUINT
 #define TRAMPOLINE_SIZE 0x0D
 #endif
 #endif
-
+constexpr hkUINT RELATIVE_JUMP_SIZE = 0x05;
 typedef struct HOOK_CONTEXT {
 	LPVOID  lpDetourFunc,
 		   *lpOrgFuncAddr,
-		    lpTargetFunc;
+		    lpTargetFunc,
+			lpHookGateway,
+			lpFunctionGateway;
 	BOOLEAN bActive;
 	BYTE	cbHookLength,
-			org_bytes_arr[TRAMPOLINE_SIZE  + MAX_INSTRUCTION_SIZE],
-			patched_bytes_arr[TRAMPOLINE_SIZE + MAX_INSTRUCTION_SIZE];
+			org_bytes_arr[RELATIVE_JUMP_SIZE  + MAX_INSTRUCTION_SIZE],
+			patched_bytes_arr[RELATIVE_JUMP_SIZE + MAX_INSTRUCTION_SIZE];
 } *LP_HOOK_CONTEXT;
 
 typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation) (
@@ -60,6 +63,7 @@ public:
 		failedToGetProcessHeap,
 		failedToAllocateMemory,
 		failedToCalculateFunctionSize,
+		function_not_found_in_modules,
 		threadUpdateFailed,
 		hookAttachFailed,
 		commitingFailed,
@@ -93,6 +97,11 @@ private:
 	//DWORD	  dwTargetPID = GetCurrentProcessId();
 	ecManager ecStatus	  = success;
 	LDE		  lde		  = LDE();
-	LPVOID generate_gateway_buffer(HOOK_CONTEXT& candidate_hook_ctx);
+
+	HookingMemoryManager MemoryManager = HookingMemoryManager(scanner);
+
+	LPVOID generate_hook_gateway(HOOK_CONTEXT& candidate_hook_ctx);
+
+	LPVOID generate_function_gateway(HOOK_CONTEXT& candidate_hook_ctx, LDE_HOOKING_STATE& state);
 };
 
