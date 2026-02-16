@@ -66,7 +66,6 @@ optimal_hook_location HookingMemoryManager::check_where_to_place_hook_by_functio
 	return after_the_module;
 }
 
-
 optimal_hook_location HookingMemoryManager::check_where_to_place_hook_by_index(LPVOID lpTargetFunction, hkUINT uiIndex) const {
 	hkUINT uiNewDisposition = reinterpret_cast<hkUINT>(modules_data_deque[uiIndex].lpModuleBaseAddr + modules_data_deque[uiIndex].dwModuleSize + modules_data_deque[uiIndex].wPostModuleAllocatedSize - reinterpret_cast<hkUINT>(lpTargetFunction));
 	if (uiNewDisposition > TWO_GIGABYTES) {
@@ -78,60 +77,59 @@ optimal_hook_location HookingMemoryManager::check_where_to_place_hook_by_index(L
 	return after_the_module;
 }
 
-
 LPVOID HookingMemoryManager::get_adjacent_virtual_buffer(LPVOID lpTargetAddress, WORD uiNeededSize) {
 	if (!lpTargetAddress) {
 		return nullptr;
 	}
-	hkUINT				  uiIndex = get_local_module_index_by_function(lpTargetAddress),
-						  uiNewPostDisposition = reinterpret_cast<hkUINT>(modules_data_deque[uiIndex].lpModuleBaseAddr + modules_data_deque[uiIndex].dwModuleSize + modules_data_deque[uiIndex].wPostModuleAllocatedSize - reinterpret_cast<hkUINT>(lpTargetAddress));
-	optimal_hook_location result;
-	if (uiNewPostDisposition > TWO_GIGABYTES) {
-		LONGLONG iNewPreDisposition = static_cast<LONGLONG>(reinterpret_cast<hkUINT>(lpTargetAddress) - reinterpret_cast<hkUINT>(modules_data_deque[uiIndex].lpModuleBaseAddr) - modules_data_deque[uiIndex].wPreModuleAllocatedSize);
-		if (iNewPreDisposition < -TWO_GIGABYTES) {
-			result = unknown;
-		} else {
+	hkUINT				  uiModuleIndex = get_local_module_index_by_function(lpTargetAddress),
+						  uiNewPostDisposition = reinterpret_cast<hkUINT>(modules_data_deque[uiModuleIndex].lpModuleBaseAddr + modules_data_deque[uiModuleIndex].dwModuleSize + modules_data_deque[uiModuleIndex].wPostModuleAllocatedSize - reinterpret_cast<hkUINT>(lpTargetAddress));
+	optimal_hook_location result = unknown;
+	if (uiNewPostDisposition < TWO_GIGABYTES) {
+		result = after_the_module;
+	} else {
+		LONGLONG iNewPreDisposition = static_cast<LONGLONG>(reinterpret_cast<hkUINT>(lpTargetAddress) - reinterpret_cast<hkUINT>(modules_data_deque[uiModuleIndex].lpModuleBaseAddr) - modules_data_deque[uiModuleIndex].wPreModuleAllocatedSize);
+		if (iNewPreDisposition > -TWO_GIGABYTES) {
 			result = before_the_module;
 		}
-	} else {
-		result = after_the_module;
 	}
 	switch (result) {
 		case unknown: {
 			return nullptr;
 		}
 		case after_the_module: {
-			if (!modules_data_deque[uiIndex].lpHooksPostAllocationBase) {
-				LPVOID lpFoundAddress = Scanner::get_adjacent_memory_forward_i32bit(reinterpret_cast<HMODULE>(modules_data_deque[uiIndex].lpModuleBaseAddr), modules_data_deque[uiIndex].dwModuleSize);
+			if (!modules_data_deque[uiModuleIndex].lpHooksPostAllocationBase) {
+				LPVOID lpFoundAddress = Scanner::get_adjacent_memory_forward_i32bit(reinterpret_cast<HMODULE>(modules_data_deque[uiModuleIndex].lpModuleBaseAddr), modules_data_deque[uiModuleIndex].dwModuleSize);
 				if (!lpFoundAddress) {
 					return nullptr;
 				}
-				if (!(modules_data_deque[uiIndex].lpHooksPostAllocationBase = VirtualAlloc(lpFoundAddress, PAGE_SIZE, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE))) {
+				if (!(modules_data_deque[uiModuleIndex].lpHooksPostAllocationBase = VirtualAlloc(lpFoundAddress, PAGE_SIZE, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE))) {
 					return nullptr;
 				}
 			}
-			if (modules_data_deque[uiIndex].wPostModuleAllocatedSize  + uiNeededSize >static_cast<WORD>(PAGE_SIZE - 1)) {
+			if (modules_data_deque[uiModuleIndex].wPostModuleAllocatedSize  + uiNeededSize > static_cast<WORD>(PAGE_SIZE - 1)) {
 				return nullptr;
 			}
-			modules_data_deque[uiIndex].wPostModuleAllocatedSize += uiNeededSize;
-			return static_cast<LPBYTE>(modules_data_deque[uiIndex].lpHooksPostAllocationBase) + modules_data_deque[uiIndex].wPostModuleAllocatedSize - uiNeededSize;
+			modules_data_deque[uiModuleIndex].wPostModuleAllocatedSize += uiNeededSize;
+			return static_cast<LPBYTE>(modules_data_deque[uiModuleIndex].lpHooksPostAllocationBase) + modules_data_deque[uiModuleIndex].wPostModuleAllocatedSize - uiNeededSize;
 		}
 		case before_the_module: {
-			if (!modules_data_deque[uiIndex].lpHooksPostAllocationBase) {
-				LPVOID lpFoundAddress = Scanner::get_adjacent_memory_backward_i32bit(reinterpret_cast<HMODULE>(modules_data_deque[uiIndex].lpModuleBaseAddr));
+			if (!modules_data_deque[uiModuleIndex].lpHooksPostAllocationBase) {
+				LPVOID lpFoundAddress = Scanner::get_adjacent_memory_backward_i32bit(reinterpret_cast<HMODULE>(modules_data_deque[uiModuleIndex].lpModuleBaseAddr));
 				if (!lpFoundAddress) {
 					return nullptr;
 				}
-				if (!(modules_data_deque[uiIndex].lpHooksPostAllocationBase = VirtualAlloc(lpFoundAddress, PAGE_SIZE, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE))) {
+				if (!(modules_data_deque[uiModuleIndex].lpHooksPostAllocationBase = VirtualAlloc(lpFoundAddress, PAGE_SIZE, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE))) {
 					return nullptr;
 				}
 			}
-			if (modules_data_deque[uiIndex].wPreModuleAllocatedSize  + uiNeededSize > static_cast<WORD>(PAGE_SIZE - 1)) {
-				modules_data_deque[uiIndex].wPreModuleAllocatedSize += uiNeededSize;
-				return static_cast<LPBYTE>(modules_data_deque[uiIndex].lpHooksPreAllocationBase) - modules_data_deque[uiIndex].wPreModuleAllocatedSize - uiNeededSize;
+			if (modules_data_deque[uiModuleIndex].wPreModuleAllocatedSize  + uiNeededSize > static_cast<WORD>(PAGE_SIZE - 1)) {
+				modules_data_deque[uiModuleIndex].wPreModuleAllocatedSize += uiNeededSize;
+				return static_cast<LPBYTE>(modules_data_deque[uiModuleIndex].lpHooksPreAllocationBase) - modules_data_deque[uiModuleIndex].wPreModuleAllocatedSize - uiNeededSize;
 			}
 			return nullptr;
 		}
 	}
 	return nullptr;
 }
+
+

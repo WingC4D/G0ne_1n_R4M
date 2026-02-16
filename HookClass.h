@@ -1,9 +1,9 @@
 #pragma once
+
+#include <Windows.h>
 #include <vector>
 #include <iostream>
 #include <deque>
-#include <Windows.h>
-#include <winternl.h>
 #include "Scanner.h"
 #include "LDE.h"
 #include "hooks_memory_manager.h"
@@ -25,17 +25,20 @@ typedef unsigned long long hUINT;
 #define TRAMPOLINE_SIZE 0x0D
 #endif
 #endif
-constexpr hkUINT RELATIVE_JUMP_SIZE = 0x05;
+constexpr BYTE   RELATIVE_JUMP_SIZE			= 0x05,
+				 MAX_INTERLOCKING_HOOK_SIZE = 0x18,
+			     INVALID_HOOK_ID			= 0xFF;
+typedef unsigned char HOOK_STATUS_CONTEXT;
 typedef struct HOOK_CONTEXT {
 	LPVOID  lpDetourFunc,
 		   *lpOrgFuncAddr,
 		    lpTargetFunc,
 			lpHookGateway,
 			lpFunctionGateway;
-	BOOLEAN bActive;
+	HOOK_STATUS_CONTEXT status_context;
 	BYTE	cbHookLength,
-			org_bytes_arr[RELATIVE_JUMP_SIZE  + MAX_INSTRUCTION_SIZE],
-			patched_bytes_arr[RELATIVE_JUMP_SIZE + MAX_INSTRUCTION_SIZE];
+			org_bytes_arr[MAX_INTERLOCKING_HOOK_SIZE],
+			patched_bytes_arr[MAX_INTERLOCKING_HOOK_SIZE];
 } *LP_HOOK_CONTEXT;
 
 typedef NTSTATUS(NTAPI* fnNtQuerySystemInformation) (
@@ -75,13 +78,14 @@ public:
 		hook_already_inactive,
 		notBuiltYet
 	} *pecManager;
+
 	Scanner					scanner;
 	WORD					wNumberOfHooks;
 	std::deque<HOOK_CONTEXT>hkContexts;
 
 	ecManager initializeLocally(_In_ HANDLE hTargetThread);
 
-	ecManager CreateLocalHook(_In_ HOOK_CONTEXT& candidate_hook_ctx, _Out_ LPWORD lpHookID);
+	ecManager CreateLocalHook(_In_ HOOK_CONTEXT& candidate_hook_ctx, _Out_ LPWORD lpHookId);
 
 	ecManager attachToThread(HANDLE hThread);
 
@@ -92,6 +96,12 @@ public:
 	ecManager uninstall_hook(WORD wHookID);
 
 private:
+	enum exchange_size : BYTE {
+		unknown		  = 0x00, 
+		eight_bytes   = 0x01,
+		sixteen_bytes = 0x02,
+		extended	  = 0x03
+	};
 	HANDLE	  hThread	  = LOCAL_THREAD_HANDLE,
 			  hProcess	  = INVALID_HANDLE_VALUE;
 	//DWORD	  dwTargetPID = GetCurrentProcessId();
@@ -103,5 +113,15 @@ private:
 	LPVOID generate_hook_gateway(HOOK_CONTEXT& candidate_hook_ctx);
 
 	LPVOID generate_function_gateway(HOOK_CONTEXT& candidate_hook_ctx, LDE_HOOKING_STATE& state);
+
+	inline BYTE is_hook_active_by_hkID(WORD wHookID) const;
+
+	exchange_size generate_exchange_size_by_index(WORD wHookId) const;
+
+	BYTE inline set_hook_active_by_hkID(WORD wHookID);
+
+	ecManager map_hook_context_by_index(WORD wHookID);
+
+	ecManager perform_data_swap(WORD wHookID);
 };
 

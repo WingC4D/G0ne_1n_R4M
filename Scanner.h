@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include <iostream>
-#include <format>
 #include <vector>
 #include <Windows.h>
 #include <winternl.h>
@@ -135,7 +134,7 @@ public:
 	};
 private:
 	WORD				  wTargetOrdinal = NULL;
-	BOOLEAN				  bIsLocal = FALSE;
+	BOOLEAN				  bIsLocal = TRUE;
 	scannerErrorCode	  ecStatus = success;
 	std::vector<BYTE>	  pSystemProcInfo;
 
