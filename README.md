@@ -12,7 +12,7 @@ A Custom, Dependency-Free Dynamic Hooking Framework for Windows x64.
 
 ### Overview
 
-This repository aims to house a research-grade hooking engine built from scratch to explore low-level Windows internals, memory management, and defense-evasion techniques.
+This repository aims to house a research-grade API hooking engine built from scratch to explore low-level Windows internals, memory management, and defense-evasion techniques.
 
 > [!NOTE]
 > The primary goal of this project was to eliminate reliance on public hooking libraries (such as [MinHook](https://github.com/TsudaKageyu/minhook), [PolyHook](https://github.com/stevemk14ebr/PolyHook_2_0), or [Detours](https://github.com/microsoft/Detours) and disassembly engines (such as [Zydis](https://github.com/zyantific/zydis) or [Capstone](https://github.com/capstone-engine/capstone)), which often carry static signatures flagged by EDR solutions. Instead, **G0ne_1n_R4M** implements a proprietary Length Disassembly Engine (LDE) and a stateless hooking architecture to maintain a minimal memory footprint and avoid detection.
