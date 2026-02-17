@@ -41,6 +41,9 @@ public:
 	optimal_hook_location check_where_to_place_hook_by_function(LPVOID lpTargetFunction) const;
 
 	optimal_hook_location check_where_to_place_hook_by_index(LPVOID lpTargetFunction, hkUINT uiIndex) const;
+
+	~HookingMemoryManager();
+
 private:
 	inline void map_all_local_modules() ;
 };
