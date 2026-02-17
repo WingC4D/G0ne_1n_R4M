@@ -136,11 +136,9 @@ HookingMemoryManager::~HookingMemoryManager() {
 	size_t sSize = modules_data_deque.size();
 	for (size_t i = NULL; i < sSize; i++) {
 		if (modules_data_deque[i].lpHooksPostAllocationBase) {
-			RtlZeroMemory(modules_data_deque[i].lpHooksPostAllocationBase, modules_data_deque[i].wPostModuleAllocatedSize);
 			VirtualFree(modules_data_deque[i].lpHooksPostAllocationBase, PAGE_SIZE, MEM_FREE);
 		}
 		if (modules_data_deque[i].lpHooksPreAllocationBase) {
-			RtlZeroMemory(modules_data_deque[i].lpHooksPreAllocationBase, modules_data_deque[i].wPreModuleAllocatedSize);
 			VirtualFree(modules_data_deque[i].lpHooksPreAllocationBase, PAGE_SIZE, MEM_FREE);
 		}
 	}
