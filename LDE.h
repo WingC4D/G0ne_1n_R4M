@@ -104,6 +104,8 @@ private:
 
 	static BYTE get_index_prefix_count(LDE_HOOKING_STATE& state, const BYTE ucIndex);
 
+	static BOOLEAN is_curr_instruction_shortened(const LDE_HOOKING_STATE& state, LPBYTE lpReferenceAddress);
+
 	enum instruction_types: WORD {
 		inc				  = 0x0000,
 		dec				  = 0x0001,
