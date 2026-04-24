@@ -60,15 +60,47 @@ Status Manager::install(Id hook_id) const {
             }
             break;
         }
-        case 0x10:
+        case 0x10: {
+            BYTE trampoline[0x10]{ inst::opcodes::JUMP };
+            *reinterpret_cast<int*>(&trampoline[1]) = contextsVec[hook_id].calculateDisposition();
+
+            if (memcpy_s(&trampoline[contextsVec[hook_id].hookSize], 0x10 - contextsVec[hook_id].hookSize, contextsVec[hook_id].target + contextsVec[hook_id].hookSize, 0x10 - contextsVec[hook_id].hookSize))
+                return hook_size_calc_failed;
+
+            if (!contextsVec[hook_id].generateNOPs(trampoline, RELATIVE_TRAMPOLINE))
+                return hook_size_calc_failed;
+
             if (!VirtualProtect(contextsVec[hook_id].target, swap_size, applied_protections, &old_protections))
                 return memory_protections_edit_failed;
+
+            _InterlockedCompareExchange128(reinterpret_cast<long long volatile*>(contextsVec[hook_id].target), *reinterpret_cast<long long*>(&trampoline[0]), *reinterpret_cast<long long*>(&trampoline[8]), reinterpret_cast<long long*>(contextsVec[hook_id].target));
+            if (!VirtualProtect(contextsVec[hook_id].target, 0x10, old_protections, &applied_protections)) {
+                _InterlockedCompareExchange128(reinterpret_cast<long long volatile*>(contextsVec[hook_id].target), *static_cast<long long*>(contextsVec[hook_id].retrieveOriginalBytes()), *(static_cast<long long*>(contextsVec[hook_id].retrieveOriginalBytes()) + 1), reinterpret_cast<long long*>(contextsVec[hook_id].target));
+                if (!VirtualProtect(contextsVec[hook_id].target, 0x10, applied_protections, &old_protections))
+                    return memory_protections_edit_failed;
+            }
             break;
+        }
+        case 0x18: {
+            BYTE trampoline[0x18]{ inst::opcodes::JUMP };
+            *reinterpret_cast<int*>(&trampoline[1]) = contextsVec[hook_id].calculateDisposition();
+            if (memcpy_s(&trampoline[contextsVec[hook_id].hookSize], 0x18 - contextsVec[hook_id].hookSize, contextsVec[hook_id].target + contextsVec[hook_id].hookSize, 0x10 - contextsVec[hook_id].hookSize))
+                return hook_size_calc_failed;
 
-        case 0x18:
+            if (!contextsVec[hook_id].generateNOPs(trampoline, RELATIVE_TRAMPOLINE))
+                return hook_size_calc_failed;
+
+            if (!VirtualProtect(contextsVec[hook_id].target, swap_size, applied_protections, &old_protections))
+                return memory_protections_edit_failed;
+
+            _InterlockedCompareExchange128(reinterpret_cast<long long volatile*>(contextsVec[hook_id].target), *reinterpret_cast<long long*>(&trampoline[0]), *reinterpret_cast<long long*>(&trampoline[8]), reinterpret_cast<long long*>(contextsVec[hook_id].target));
+            if (!VirtualProtect(contextsVec[hook_id].target, 0x10, old_protections, &applied_protections)) {
+                _InterlockedCompareExchange128(reinterpret_cast<long long volatile*>(contextsVec[hook_id].target), *static_cast<long long*>(contextsVec[hook_id].retrieveOriginalBytes()), *(static_cast<long long*>(contextsVec[hook_id].retrieveOriginalBytes()) + 1), reinterpret_cast<long long*>(contextsVec[hook_id].target));
+                if (!VirtualProtect(contextsVec[hook_id].target, 0x10, applied_protections, &old_protections))
+                    return memory_protections_edit_failed;
+            }
             break;
-
-
+        }
         default:
             return hook_size_calc_failed;
 
