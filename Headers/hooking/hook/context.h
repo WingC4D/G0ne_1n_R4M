@@ -24,6 +24,8 @@ namespace hook {
 
         BOOLEAN generateNOPs(BYTE buffer[], BYTE jump_size) const;
 
+        BOOLEAN findAndFixRelocations() const;
+
         BYTE getExchangeSize() const {
             if (hookSize <= 8)
                 return 8;

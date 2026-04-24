@@ -10,7 +10,6 @@ void Context::createGateways() const { using namespace assembly; using namespace
     *reinterpret_cast<const void**>(trampolinesBuffer + ABSOLUTE_TRAMPOLINE + hookSize + MOVE_64BIT_REG)               = target + hookSize;
     for (BYTE i = 0; i < hookSize; i++)
         trampolinesBuffer[ABSOLUTE_TRAMPOLINE + i] = target[i];
-    //lde.fixRipRelative;
 }
 
 long Context::calculateDisposition() const {
@@ -46,5 +45,33 @@ BOOLEAN Context::generateNOPs(BYTE buffer[], const BYTE jump_size) const {
         default:
             return false;
     }
+    return true;
+}
+
+BOOLEAN Context::findAndFixRelocations() const {
+    if (!trampolinesBuffer)
+        return false;
+
+    if (!lde.ripRelativeIdxCount)
+        return true;
+
+    for (BYTE rip_rel_idx = 0, general_idx = 0, accumulated_length = 0; general_idx < lde.instruction_count; general_idx++) {
+        if (general_idx != lde.ripRelativeIndexes[rip_rel_idx]) {
+            accumulated_length += lde.contextArray[general_idx].getLength();
+            continue;
+        }
+        BYTE* old_target = target + accumulated_length + lde.contextArray[general_idx].getLength() +
+            *reinterpret_cast<int*>(target + accumulated_length + lde.contextArray[general_idx].getPreDisposition());
+
+        long long new_disposition = old_target - (trampolinesBuffer + accumulated_length + lde.contextArray[general_idx].getLength());
+
+        if ((new_disposition & 0xFFFFFFFF00000000) != 0xFFFFFFFF00000000 && new_disposition & 0xFFFFFF00000000)
+            return false;
+
+        *reinterpret_cast<long*>(trampolinesBuffer + accumulated_length + lde.contextArray[general_idx].getPreDisposition()) = static_cast<long>(new_disposition);
+
+        rip_rel_idx++;
+    }
+
     return true;
 }

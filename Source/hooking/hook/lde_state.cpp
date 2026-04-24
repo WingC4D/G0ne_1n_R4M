@@ -8,16 +8,18 @@ LdeState::Status LdeState::resolveHookSize(const void*& target_function) {
         return no_input;
 
     switch (checkForIAT(static_cast<LPCBYTE>(target_function))) {
-    case no_IAT:
-        prepareForNextStep();
-        break;
-    case has_IAT:
-        target_function = reinterpret_cast<const BYTE*>(handleIAT(static_cast<LPCBYTE>(target_function)));
-        break;
-    case CheckResult::no_input:
-        return no_input;
-    case failed:
-        return hook_size_calc_failed;
+        case no_IAT:
+            prepareForNextStep();
+            break;
+        case has_IAT:
+            target_function = handleIAT(static_cast<LPCBYTE>(target_function));
+            if (!target_function)
+                return hook_size_calc_failed;
+            break;
+        case CheckResult::no_input:
+            return no_input;
+        case failed:
+            return hook_size_calc_failed;
     }
 
     while (trackedSize < RELATIVE_TRAMPOLINE && instruction_count < RELATIVE_TRAMPOLINE) { using enum inst::Context::Status;

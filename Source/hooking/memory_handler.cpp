@@ -38,7 +38,7 @@ AllocationResult Handler::allocateGateways(const BYTE* target_function, BYTE buf
 
 Index Handler::findModuleByFunction(const void* function_address) { using namespace hook::memory;
     WORD module_index = 0;
-    for (std::vector<ModuleContext>::iterator it_beginning = modules.begin(), it_ending = --modules.end(), last_end = it_ending; it_beginning != it_ending && it_beginning != last_end; 
+    for (std::vector<ModuleContext>::iterator it_beginning = modules.begin(), it_ending = --modules.end(), last_end = it_ending; it_beginning != last_end && it_beginning != modules.end(); 
         ++it_beginning, --it_ending) {
 
         if (it_beginning->base < function_address)
