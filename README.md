@@ -69,22 +69,24 @@ This framework is intended to be compiled as a static library or included direct
 HookManager hookMgr(GetCurrentProcess());
 HOOK_CONTEXT hookCtx;
 
-hookCtx.lpTargetFunc  = &MessageBoxA;       // Address of function to hook
-hookCtx.lpDetourFunc  = &HookedMessageBoxA; // Address of your detour
-hookCtx.lpOrgFuncAddr = &g_MessageBoxA;     // Pointer to receive the trampoline
+const BYTE *target   = reinterpret_cast<const BYTE*>(&MessageBoxA),       // Address of function to hook
+const void *detour   = reinterpret_cast<const void *>(&HookedMessageBoxA);// Address of your detour
+LPCBYTE    *original = reinterpret_cast<LPCBYTE *>(&g_MessageBoxA);       // Pointer to receive the trampoline
 
 // 1. Analyze and prepare the trampoline
-hookMgr.CreateLocalHook(&hookCtx, &hookID);
+hook::Id HookId = hookMgr.create(const BYTE* target, const void *detour, LPCBYTE * original);
 
 // 2. Install the hook (modify memory permissions and write JMP)
-hookMgr.install_hook(hookID);
+hookMgr.install(HookId);
 
 // 3. Uninstall the hook (modify the memory space back to its original state)
-hookMgr.uninstall_hook(hookID);
+hookMgr.uninstall_hook(HookId);
 ```
 
 ### To Do List
 
-- [x] Refactor the `prefix` case.
-- [ ] Implement Control Flow Graph Tracing
-- [ ] Port the symbolic execution engine found in my [IDAPython Deobfuscation Script](https://github.com/WingC4D/IDA-Execution-Flow-Deobfuscating-Script) into this logic to be able to indirectly call stolen `SYSCALL` stubs.
+- [x] Implement A Length Disassembly Engine.
+- [x] Implement An Inline API Hooking Engine.
+- [x] Implement Control Flow Graph Tracing.
+- [ ] Implement Full x64 Disassembly.
+- [ ] Port Symbolic Execution Engine From [IDAPython Deobfuscation Script](https://github.com/WingC4D/IDA-Execution-Flow-Deobfuscating-Script) Into This Project.
