@@ -51,7 +51,7 @@ An inline hooking engine designed for stability and concurrency.
 A custom PE parser and memory walker that avoids standard WinAPI calls (`GetProcAddress`, `GetModuleHandle`).
 
 - **PEB Walking:** Manually traverses the Process Environment Block (PEB) and `LDR_DATA_TABLE_ENTRY` to resolve module bases.
-- **Manual Export Parsing:** Parses the Export Directory directly to resolve function addresses by hash, bypassing IAT hooks and standard API monitoring.
+- **Manual Export Parsing:** Parses the Export Directory directly to resolve function addresses, bypassing IAT hooks and standard API monitoring.
 - **Page Scanning:** Iterates memory pages to find valid injection points that align with allocation granularity.
 
 ## Technical Highlights
