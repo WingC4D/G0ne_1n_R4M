@@ -1,15 +1,12 @@
-#include "instruction_ctx.h"
-
+#include "length_disassembly_engine/instruction/length_context.h"
 using namespace inst;
 
 //Main instruction decoding dispatcher.
 Context::Status Context::map(const BYTE * const analysis_address) { using enum FirstByteTraits; using enum Status;
     if (!analysis_address)
         return no_input;
-
     if (!setLength(getPreDisposition()))
         return instruction_overflow;
-
     switch (results[*analysis_address]) {
         case none:
             return *analysis_address == opcodes::RETURN || *analysis_address == opcodes::RETURN_FAR ? reached_end_of_function : success;
@@ -29,25 +26,21 @@ Context::Status Context::map(const BYTE * const analysis_address) { using enum F
         case has_mod_rm | imm_one_byte:
             if (!incrementLength())
                 return instruction_overflow;
-
             return analyseModRM(analysis_address);
 
         case has_mod_rm | imm_two_bytes:
             if (!increaseLength(SIZE_OF_WORD))
                 return instruction_overflow;
-
             return analyseModRM(analysis_address);
 
         case has_mod_rm | imm_four_bytes:
             if (!increaseLength(SIZE_OF_DWORD))
                 return instruction_overflow;
-
             return analyseModRM(analysis_address);
 
         case has_mod_rm | imm_eight_bytes:
             if (!increaseLength(SIZE_OF_QWORD))
                 return instruction_overflow;
-
             return analyseModRM(analysis_address);
 
         case has_mod_rm | imm_eight_bytes | imm_four_bytes:
@@ -58,7 +51,7 @@ Context::Status Context::map(const BYTE * const analysis_address) { using enum F
             return incrementLength() ? success : instruction_overflow;
 
         case imm_two_bytes:
-            return increaseLength(SIZE_OF_WORD) ? success  : instruction_overflow;
+            return increaseLength(SIZE_OF_WORD)  ? success : instruction_overflow;
 
         case imm_four_bytes:
             return increaseLength(SIZE_OF_DWORD) ? success : instruction_overflow;
@@ -69,22 +62,17 @@ Context::Status Context::map(const BYTE * const analysis_address) { using enum F
         case imm_four_bytes | imm_eight_bytes:
             if (*analysis_address == opcodes::CALL || *analysis_address == opcodes::JUMP)
                 setRipRelative();
-
             return increaseLength(rex_w ? SIZE_OF_QWORD : SIZE_OF_DWORD) ? success :instruction_overflow;
 
         case prefix:
             if ((*analysis_address & prefixes::REX_MASK) == prefixes::REX_BASE)
                 rex_w = true;
-
             else if (!prefix_count && *analysis_address == prefixes::SHORT)
                 shortened = true;
-
             if (!incrementPrefixCount()) 
                 return prefix_overflow;
-            
             if (!incrementLength()) 
                 return instruction_overflow;
-
             return map(analysis_address + 1);
         
         default:
@@ -96,13 +84,10 @@ Context::Status Context::map(const BYTE * const analysis_address) { using enum F
 Context::Status Context::analyseModRM(const BYTE* const preceding_byte_ptr) { using namespace mod_rm;
     if (!preceding_byte_ptr) 
         return no_input;
-
     if (!incrementOpcode())  
         return opcode_overflow;
-                             
     if (!incrementLength())  
         return instruction_overflow;
-
     switch (preceding_byte_ptr[1] & MOD_MASK) {
         case MOD11:
             return success;
@@ -110,13 +95,11 @@ Context::Status Context::analyseModRM(const BYTE* const preceding_byte_ptr) { us
         case MOD10:
             if (success != analyseRM4(preceding_byte_ptr, SIZE_OF_BYTE))
                 return instruction_overflow;
-
             return increaseLength(SIZE_OF_DWORD) ? success : instruction_overflow;
 
         case MOD01:
             if (success != analyseRM4(preceding_byte_ptr, SIZE_OF_BYTE))
                 return instruction_overflow;
-
             return incrementLength() ? success : instruction_overflow;
 
         default:
@@ -126,7 +109,6 @@ Context::Status Context::analyseModRM(const BYTE* const preceding_byte_ptr) { us
             }
             if ((preceding_byte_ptr[1] & RM_MASK) != 5) 
                 return success;
-
             rip_relative = true;
             return increaseLength(SIZE_OF_DWORD) ? success : instruction_overflow;
     }
@@ -135,26 +117,21 @@ Context::Status Context::analyseModRM(const BYTE* const preceding_byte_ptr) { us
 Context::Status Context::analyseAVX(const BYTE * const analysis_address) {
     if (!incrementLength())
         return instruction_overflow;
-
     if (!incrementPrefixCount())
         return prefix_overflow;
     if (*analysis_address == 0xC5) {
         return analyseSpecialGroup(analysis_address + 1);
     }
-
-    return Context::Status::wrong_input;
+    return wrong_input;
 }
 
 Context::Status Context::analyseSpecialGroup(const BYTE* const preceding_byte_ptr) {
     if (!preceding_byte_ptr) 
         return no_input;
-
     if (!incrementLength())
         return instruction_overflow;
-
     if (!incrementOpcode())
         return opcode_overflow;
-
     switch (preceding_byte_ptr[1]) {
         case 0x05:
         case 0x06:
@@ -178,10 +155,8 @@ Context::Status Context::analyseSpecialGroup(const BYTE* const preceding_byte_pt
         case 0xBA:
             if (!incrementOpcode())
                 return opcode_overflow;
-
             if (!incrementLength())
                 return instruction_overflow;
-
             break;
 
         default:
@@ -195,17 +170,13 @@ Context::Status Context::analyseSpecialGroup(const BYTE* const preceding_byte_pt
 Context::Status Context::analyseGroup3(const BYTE* const analysis_address) {
     if (!incrementLength())
         return instruction_overflow;
-
     if (!incrementPrefixCount())
         return opcode_overflow;
-
     switch (*analysis_address) {
         case 0xF6:
             return analyseF6(analysis_address);
-
         case 0xF7:
             return analyseF7(analysis_address);
-
         default:
             return wrong_input;
     }
@@ -219,36 +190,30 @@ Context::Status Context::analyseF6(const BYTE* const preceding_byte_ptr) { using
         case MOD10:
             if (success != analyseRM4(preceding_byte_ptr, SIZE_OF_DWORD))
                 return instruction_overflow;
-
             if (success != analyseRegBits(preceding_byte_ptr, SIZE_OF_BYTE))
                 return instruction_overflow;
-
             return incrementLength() ? success : instruction_overflow;
 
         case MOD01:
             if (success != analyseRM4(preceding_byte_ptr, SIZE_OF_BYTE))
                 return instruction_overflow;
-
             if (success != analyseRegBits(preceding_byte_ptr, SIZE_OF_BYTE))
                 return instruction_overflow;
-
             return incrementLength() ? success : instruction_overflow;
 
         default:
+            if (!incrementLength())
+                return instruction_overflow;
             if (success != analyseRM4nSIB(preceding_byte_ptr, SIZE_OF_BYTE, SIZE_OF_DWORD))
                 return instruction_overflow;
-
             if ((preceding_byte_ptr[1] & RM_MASK) != 5) 
                 return success;
-
             setRipRelative();
             return incrementLength() ? success : instruction_overflow;
     }
 }
 
 Context::Status Context::analyseF7(const BYTE* const preceding_byte_ptr) { using namespace mod_rm;
-    //if (preceding_byte_ptr[1] == 0xd1)
-        //std::println();
     switch (preceding_byte_ptr[1] & MOD_MASK) {
         case MOD11:
             return analyseRegBits(preceding_byte_ptr, SIZE_OF_DWORD);
@@ -256,22 +221,17 @@ Context::Status Context::analyseF7(const BYTE* const preceding_byte_ptr) { using
         case MOD10:
             if (!increaseLength(SIZE_OF_DWORD))
                 return instruction_overflow;
-
             if (success != analyseRM4nSIB(preceding_byte_ptr, SIZE_OF_BYTE, SIZE_OF_DWORD))
                 return instruction_overflow;
-            
             if ((preceding_byte_ptr[1] & REG_MASK) < 0x10)
                 return increaseLength(shortened ? SIZE_OF_WORD : SIZE_OF_DWORD) ? success : instruction_overflow;
-
             return success;
 
         case MOD01:
             if (success != analyseRM4(preceding_byte_ptr, SIZE_OF_BYTE))
                 return instruction_overflow;
-
             if ((preceding_byte_ptr[1] & REG_MASK) > 0x10)
                 return success;
-
             return increaseLength(shortened ? SIZE_OF_WORD : SIZE_OF_DWORD) ? success : instruction_overflow;
 
         default:
@@ -306,16 +266,12 @@ WORD Context::analyseOpcodeType(const BYTE * const analysis_address) { using nam
             switch (analysis_address[1]) {
                 case 0x05:
                     return sys_call;
-
                 case 0x07:
                     return sys_ret;
-
                 case 0x34:
                     return sys_enter;
-
                 case 0x35:
                     return sys_exit;
-
                 default:
                     rip_relative = true;
                     return (analysis_address[1] & 0xF0) == 0x80 ? conditional | _far | jump : unknown;
@@ -355,7 +311,7 @@ const BYTE * Context::resolveJump(const BYTE* const analysis_address) { using en
     if (!analysis_address)
         return nullptr;
 
-    switch (analyseOpcodeType(analysis_address)) {
+    switch (analyseOpcodeType(analysis_address + prefix_count)) {
         case conditional | _far | jump:
         case jump:
         case call:
@@ -376,11 +332,11 @@ const BYTE * Context::resolveJump(const BYTE* const analysis_address) { using en
     }
 }
 
-block::TraceResults Context::checkForNewBlock(const BYTE* lpReference) { using enum block::TraceResults;
-    if (!lpReference)
+block::TraceResults Context::checkForNewBlock(const BYTE* analysis_address) { using enum block::TraceResults;
+    if (!analysis_address)
         return failed;
 
-    switch (analyseOpcodeType(lpReference)) { using enum opcodes::Types;
+    switch (analyseOpcodeType(analysis_address + prefix_count)) { using enum opcodes::Types;
 
         case conditional | _far | jump:
         case conditional |  jump:

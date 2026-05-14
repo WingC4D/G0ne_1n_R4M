@@ -1,5 +1,7 @@
 #include "hooking/memory_handler.h"
 
+#include <print>
+
 using namespace hook::memory;
 
 AllocationResult Handler::allocateGateways(const BYTE* target_function, BYTE buffer_size) { using namespace hook::sizes;
@@ -86,11 +88,18 @@ BYTE* Handler::allocatePreModuleBuffer(const BYTE* target_function, const Index 
             i++;
             continue;
         }
-        if (memory_basic_info.State == MEM_FREE) {
-            modules[idx].preAllocation = static_cast<BYTE*>(VirtualAlloc(memory_basic_info.BaseAddress, PAGE, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE));
-            if (!modules[idx].preAllocation)
-                return  nullptr;
-
+        if (memory_basic_info.State == MEM_FREE && !memory_basic_info.Type) {
+            if (memory_basic_info.Protect != PAGE_GUARD)
+                modules[idx].preAllocation = static_cast<BYTE*>(VirtualAlloc(memory_basic_info.BaseAddress, 0x100, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE));
+            else {
+                i++;
+                continue;
+            }
+            if (!modules[idx].preAllocation) {
+                std::println("[!] VirtualAlloc Failed with error code: {:#010x}", GetLastError());
+                i++;
+                continue;
+            }
             if (target_function - modules[idx].preAllocation > TWO_GB) {
                 VirtualFree(modules[idx].preAllocation, PAGE, MEM_FREE);
                 modules[idx].preAllocation = nullptr;
@@ -104,7 +113,6 @@ BYTE* Handler::allocatePreModuleBuffer(const BYTE* target_function, const Index 
 }
 
 void Handler::addModule(const _LDR_DATA_TABLE_ENTRY* table_entry) {
-
     if (!table_entry->Reserved2[0])
         return;
     for (auto it = modules.begin(); it != modules.end(); ++it) {

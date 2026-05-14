@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "independent_types.h"
+#include "disassembly/instruction_mapping/independent_types.h"
 namespace hook {
     using               Id         = WORD;
     inline constexpr Id INVALID_ID = 0xFFFF;
